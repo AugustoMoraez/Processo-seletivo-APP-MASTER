@@ -5,13 +5,16 @@ import { AuthPage } from './routes/Auth';
 import { HomePage } from './routes/home';
 import { GamePage } from './routes/gamePage';
 import { useState } from 'react';
+import { getData } from './api/api';
 
 const App = () => {
   const[userCurrent,setUserCurrent] = useState(false);
+  
   return (
     <Container>
       {
-        userCurrent?
+        userCurrent
+        ?
           <>
             <Header/>
             <Routes>
