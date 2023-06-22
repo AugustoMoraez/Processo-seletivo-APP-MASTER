@@ -4,16 +4,18 @@ import { Header } from './components/header';
 import { AuthPage } from './routes/Auth';
 import { HomePage } from './routes/home';
 import { GamePage } from './routes/gamePage';
-import { useState } from 'react';
-import { getData } from './api/api';
+import { useSelector } from 'react-redux';
+import { rootState } from './redux/store';
+
 
 const App = () => {
-  const[userCurrent,setUserCurrent] = useState(false);
+ 
+  const {currentUser} = useSelector((state:rootState)=>state.auth)
   
   return (
     <Container>
       {
-        userCurrent
+        currentUser 
         ?
           <>
             <Header/>

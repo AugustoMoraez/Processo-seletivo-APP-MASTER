@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { Container,Fieldset,Form } from "./style";
-import { getData } from "../../api/api";
+import { useFecth } from "../../api/useFetch";
+
+
 
 
 export const AuthPage = () => {
+
     const[inputText,setInputText] = useState("");
-    
-    
+
     const inputTextChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
     }
-    
     const inputLogin = () => {
-        const data = getData(inputText);
-        console.log(data)
+        console.log(useFecth(inputText))
     }
 
     return(
