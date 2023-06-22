@@ -12,7 +12,9 @@ body{
     background-color: #061E37;
     color:#fefefe;
 }
-a,button{
+a,button,
+input[type="email"],
+input[type="submit"]{
     border: 0px;
     outline: none;
     text-decoration: none;
