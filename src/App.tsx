@@ -9,6 +9,7 @@ import { GenrePage } from './routes/genero-filter';
 import { GamePage } from './routes/game-page';
 //libs
 import { Routes,Route } from 'react-router-dom';
+import useCustomQuery from './api/useCustomQuery';
 //hooks
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -17,7 +18,7 @@ import { rootState } from './redux/store';
 
 
 const App = () => {
- 
+  const{data,isLoading,isError} = useCustomQuery();
   const {tokenAcess} = useSelector((state:rootState)=>state.authenticate)
   const[toggle,setToggle]=useState<boolean>(false);
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
@@ -35,7 +36,7 @@ const App = () => {
             />
 
             <Routes>
-              <Route path="/" element={<HomePage/>} />
+              <Route path="/" element={<HomePage data={data} isError={isError} isLoading={isLoading} />} />
               <Route path="/game/:game" element={<GamePage/>} />
               <Route path="/filter/:genre" element={<GenrePage/>} />
             </Routes>

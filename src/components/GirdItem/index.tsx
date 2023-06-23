@@ -1,5 +1,6 @@
-import { Container,Thumbnail, Filter,Button } from "./style";
+import {Button,CardContainer,CoverImage,GameName,CompanyName,CardContent,GameInfo} from "./style";
 import { game } from "../../types/game";
+import { useNavigate } from "react-router-dom";
 
 
 type prop = {
@@ -7,16 +8,20 @@ type prop = {
 }
 
 export const GridItem = ({game}:prop) => {
+    const nav = useNavigate();
+    const redirect = () => {
+        nav(`filter/${game.id}`)       
+    }
     return(
-        <Container>
-            <Thumbnail src={game.thumbnail} alt={game.title}/>
-            <Filter>
-                <Filter>
-                    <p>{game.title}</p>
-                    <Button>MAIS</Button>
-                </Filter>
-            </Filter>
-
-        </Container>
+        <CardContainer onClick={redirect}>
+        <CoverImage src={game.thumbnail} alt={game.title} />
+        <CardContent>
+          <GameInfo>
+          <GameName>{game.title}</GameName>
+          <CompanyName>{game.developer}</CompanyName>
+          </GameInfo>
+          <Button>Mais informação</Button>
+        </CardContent>
+      </CardContainer>
     )
 }

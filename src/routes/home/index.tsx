@@ -3,11 +3,16 @@ import { GridContainer } from "../../components/GridContainer/style";
 import { Load } from "../../components/Loader";
 import { ErrMessage } from "../../components/ErrorMsg";
 import { GridItem } from "../../components/GirdItem";
-import ListGames from "../../data/list-games";
+import { game } from "../../types/game";
 
-export const HomePage = () => {
 
-    const{data,isLoading,isError} = ListGames();
+type prop = {
+    data:game[]|undefined,
+    isLoading:boolean,
+    isError:boolean
+}
+
+export const HomePage = ({data,isLoading,isError}:prop) => {
 
     return(
         <Container>

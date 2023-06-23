@@ -5,8 +5,10 @@ export const Container = styled.div`
     width: 100%;
     padding-top: 100px;  
     position: relative;
-    h3{
-        margin-top: 10px;
-        text-align: center;
-    }
+`;
+export const FilterFor = styled.h3`
+    text-align: center;
+    font-size: 20px;
+    margin-top:20px ;
+
 `;

@@ -1,8 +1,8 @@
-import { Container } from "./style";
+import { Container,FilterFor } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
 import { useParams } from "react-router-dom";
 import { GridItem } from "../../components/GirdItem";
-import ListGames from "../../data/list-games";
+import ListGames from "../../api/useCustomQuery";
 
 export const GenrePage = () => {
     const params = useParams();
@@ -14,7 +14,7 @@ export const GenrePage = () => {
         <>
 
             <Container>
-                <h3>Apenas: {genre}</h3>
+                <FilterFor>Apenenas: {genre}</FilterFor>
                 <GridContainer>
                     {games && games.map((game) => (
                         <GridItem game={game} key={game.id} />

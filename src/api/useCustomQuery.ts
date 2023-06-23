@@ -1,12 +1,12 @@
 import { rootState } from '../redux/store';
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
-import fetchData from "../api/fetchData";
+import fetchData from "./fetchData";
 import { game } from '../types/game';
 
-type prop = { data: game[] | undefined; isLoading: boolean; isError: boolean; }
+export type data = { data: game[] | undefined; isLoading: boolean; isError: boolean; }
 
-const ListGames = ():prop => {
+const useCustomQuery = ():data => {
     const fetch = () => {
         let request = {}
         const{email}= useSelector((state:rootState)=> state.authenticate);
@@ -17,6 +17,4 @@ const ListGames = ():prop => {
     return fetch();
 }
 
-
-
-export default ListGames;
+export default useCustomQuery;
