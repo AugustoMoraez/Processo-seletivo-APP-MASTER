@@ -1,6 +1,6 @@
 //components
 import { Container } from './appStyle';
-import { Header } from './components/Header';
+import { Header } from './components/header';
 import { Aside } from './components/Aside';
 //pages
 import { AuthPage } from './routes/authentication';
