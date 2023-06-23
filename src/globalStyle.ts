@@ -20,5 +20,11 @@ input[type="submit"]{
     text-decoration: none;
     transition: 0.5s;
 }
+ul{
+    transition: 0.5s;
+    font-family: 'Nunito';
+    display: flex;
+    list-style: none;
+}
 
 `;

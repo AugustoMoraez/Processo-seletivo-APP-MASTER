@@ -1,20 +1,20 @@
 
-import axios, { AxiosResponse } from 'axios';
-import { rootState } from '../redux/store';
-import { useSelector } from "react-redux";
+import axios from 'axios';
 import { game } from '../types/game';
 
-const fetchData = async (): Promise<AxiosResponse<game[]>> => {
+export const api = axios.create({
+    baseURL: 'https://games-test-api-81e9fb0d564a.herokuapp.com/api/',
+    timeout: 5000,
+}); 
 
-    const {email} = useSelector((state:rootState)=>state.auth);
+const fetchData = async (email:string): Promise<game[]> => {
     
-    const api = axios.create({
-        baseURL: 'https://games-test-api-81e9fb0d564a.herokuapp.com/api/',
-        headers: {"dev-email-address":email},
-    });  
+    const response = await api.get<game[]>("/data/",{
+        headers: {"dev-email-address":email}
+    });
 
-    const response = await api.get<game[]>('/data/');
-    return response;
+    return response.data
+
 };
 
 

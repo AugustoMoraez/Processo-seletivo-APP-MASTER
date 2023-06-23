@@ -1,9 +1,24 @@
-import { Container } from "./style"
+import {Container} from "./style";
+import { Menu } from "../Menu";
+import { Link } from "react-router-dom";
 
-export const Header = () => {
+
+
+type props = {
+    toggleFunc:()=>void,
+    
+}
+
+export const Header = ({toggleFunc}:props) => {
     return(
         <Container>
-            aa
+
+            <Link to="/">
+                GameDev
+            </Link>
+            
+            <Menu toggleFunc={toggleFunc} />
+
         </Container>
     )
 }

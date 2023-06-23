@@ -4,8 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const slice = createSlice({
     name:"authenticate",
     initialState:{
-        currentUser:false,
-        email:"",
+        currentUser:true,
+        email:"moraezaugusto@gmail.com",
         
     },
     reducers:{
