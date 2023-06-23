@@ -17,13 +17,13 @@ import { rootState } from './redux/store';
 
 const App = () => {
  
-  const {currentUser} = useSelector((state:rootState)=>state.authenticate)
+  const {tokenAcess} = useSelector((state:rootState)=>state.authenticate)
   const[toggle,setToggle]=useState<boolean>(false);
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
   return (
     <Container>
       {
-        currentUser 
+        tokenAcess 
         ?
           <>
             <Header  toggleFunc={()=>toggleFunc(toggle)} />
