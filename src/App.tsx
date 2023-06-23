@@ -1,18 +1,23 @@
+//components
 import { Container } from './appStyle';
-import { Routes,Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Aside } from './components/Aside';
+//pages
 import { AuthPage } from './routes/authentication';
 import { HomePage } from './routes/home';
 import { GamePage } from './routes/game-page';
+//libs
+import { Routes,Route } from 'react-router-dom';
+//hooks
 import { useSelector } from 'react-redux';
-import { rootState } from './redux/store';
 import { useState } from 'react';
+//types 
+import { rootState } from './redux/store';
 
 
 const App = () => {
  
-  const {currentUser} = useSelector((state:rootState)=>state.auth)
+  const {currentUser} = useSelector((state:rootState)=>state.authenticate)
   const[toggle,setToggle]=useState<boolean>(false);
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
   return (
