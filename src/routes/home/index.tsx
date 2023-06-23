@@ -1,16 +1,12 @@
 import { Container,GridContainer } from "./style";
 import { Load } from "../../components/Loader";
 import { ErrMessage } from "../../components/ErrorMsg";
-import { rootState } from '../../redux/store';
-import { useSelector } from "react-redux";
-import { useQuery } from "react-query";
-import fetchData from "../../api/fetchData";
 
+import ListGames from "../../data/list-games";
 
 export const HomePage = () => {
-    
-    const{email}= useSelector((state:rootState)=> state.authenticate);
-    const{data,isLoading,isError} = useQuery("api-data",()=>fetchData(email),{retry: false});
+
+    const{data,isLoading,isError} = ListGames();
 
     return(
         <Container>
