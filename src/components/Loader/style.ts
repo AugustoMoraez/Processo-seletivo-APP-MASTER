@@ -9,8 +9,9 @@ export const Container = styled.div`
             transform: rotate(1turn)
         }
     }
-    position: absolute;
-    margin: 40vh 50vh;
+    
+    margin: auto;
+    margin-top: 40vh;
     animation: rotating 0.5s infinite;
     border: 6px solid #fff;
     border-radius: 50%;

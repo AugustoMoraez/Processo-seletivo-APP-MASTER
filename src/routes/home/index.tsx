@@ -1,7 +1,8 @@
-import { Container,GridContainer } from "./style";
+import { Container } from "./style";
+import { GridContainer } from "../../components/GridContainer/style";
 import { Load } from "../../components/Loader";
 import { ErrMessage } from "../../components/ErrorMsg";
-
+import { GridItem } from "../../components/GirdItem";
 import ListGames from "../../data/list-games";
 
 export const HomePage = () => {
@@ -10,13 +11,21 @@ export const HomePage = () => {
 
     return(
         <Container>
-            <GridContainer>
-                {isError && <ErrMessage/> }
-                {isLoading && <Load/> }
-                {data && data.map((item)=>(
-                    <div key={item.id}>{item.title}</div>
-                ))}
-            </GridContainer>
+                {isLoading?
+                    <Load/>
+                :
+                <GridContainer>
+                    {
+                        isError?
+                        <ErrMessage/>
+                        :
+                        data && data.map((item)=>(
+                            <GridItem game={item} key={item.id}/>
+                        ))
+                    }
+                </GridContainer>
+                
+                }
         </Container>
     )
 }

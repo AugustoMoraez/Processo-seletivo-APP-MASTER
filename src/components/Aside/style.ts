@@ -16,7 +16,7 @@ export const Container = styled.aside<props>`
     
     z-index: 99;
     //style
-    background-color: #061E37;
+    background-color: #4BA6FB;
     transition: 0.5s;
     //sub-componentes
     nav{
@@ -48,14 +48,13 @@ export const MenuOption = styled.li`
     padding: 10px;
     //style
     transition: 0.5s;
+    font-weight: 100;
 
-    a{
-        color: #fff;
-        font-size: 20px;
-    }
+    
     //hover
     &:hover{
-        opacity: 0.3;
+        cursor: pointer;
+        background-color:#4BBCFB;
     }
     
 `;

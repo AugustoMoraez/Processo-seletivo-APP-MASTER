@@ -5,6 +5,7 @@ import { Aside } from './components/Aside';
 //pages
 import { AuthPage } from './routes/authentication';
 import { HomePage } from './routes/home';
+import { GenrePage } from './routes/genero-filter';
 import { GamePage } from './routes/game-page';
 //libs
 import { Routes,Route } from 'react-router-dom';
@@ -35,7 +36,8 @@ const App = () => {
 
             <Routes>
               <Route path="/" element={<HomePage/>} />
-              <Route path="/game/:slug" element={<GamePage/>} />
+              <Route path="/game/:game" element={<GamePage/>} />
+              <Route path="/filter/:genre" element={<GenrePage/>} />
             </Routes>
           </>  
         :
