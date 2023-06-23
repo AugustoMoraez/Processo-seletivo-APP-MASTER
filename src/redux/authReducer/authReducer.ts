@@ -5,18 +5,17 @@ const slice = createSlice({
     name:"authenticate",
     initialState:{
         currentUser:false,
-        gameList:[]
+        email:"",
+        
     },
     reducers:{
-        setAuth:(state,action)=>{
-            state.currentUser = action.payload;
+        setUser:(state,action)=>{
+            state.email = action.payload.email;
+            state.currentUser = true;
         },
-        setGameList:(state,action)=>{
-            state.gameList = action.payload;
-            console.log(state.gameList)
-        }
+        
     }
 });
 
-export const{setAuth,setGameList}= slice.actions;
+export const{setUser}= slice.actions;
 export default slice.reducer;

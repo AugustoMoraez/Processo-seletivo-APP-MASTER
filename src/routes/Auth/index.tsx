@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { Container,Fieldset,Form } from "./style";
-import { useFecth } from "../../api/useFetch";
-
-
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/authReducer/authReducer";
 
 export const AuthPage = () => {
 
     const[inputText,setInputText] = useState("");
-
+    const dispatch = useDispatch();
     const inputTextChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
     }
-    const inputLogin = () => {
-        console.log(useFecth(inputText))
-    }
+    const hanldeLogin = () => {dispatch(setUser({email:inputText}))}
 
     return(
         <Container>
@@ -31,7 +27,7 @@ export const AuthPage = () => {
                      placeholder="email@email.com"
                      />
 
-                    <input type="submit" value="Entrar" onClick={inputLogin} />
+                    <input type="submit" value="Entrar" onClick={hanldeLogin} />
                 </Form>
             </Fieldset>
         </Container>
