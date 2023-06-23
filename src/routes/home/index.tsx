@@ -4,12 +4,12 @@ import { ErrMessage } from "../../components/ErrorMsg";
 import { rootState } from '../../redux/store';
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
-import fetchData from "../../services/fetchData";
+import fetchData from "../../api/fetchData";
 
 
 export const HomePage = () => {
     
-    const{email}= useSelector((state:rootState)=> state.auth);
+    const{email}= useSelector((state:rootState)=> state.authenticate);
     const{data,isLoading,isError} = useQuery("api-data",()=>fetchData(email),{retry: false});
 
     return(

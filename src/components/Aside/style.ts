@@ -18,16 +18,21 @@ export const Container = styled.aside<props>`
     //style
     background-color: #061E37;
     transition: 0.5s;
+    //sub-componentes
+    nav{
+        display:  ${(props)=> props.toggle === "true" ? "block" : "none" };
+    }
+
     //media
     @media (max-width:600px) {
         max-width: ${(props)=> props.toggle === "true" ? "100vw" : "0px" };
     }
 
 `;
-export const Nav = styled.nav<props>`
+export const Nav = styled.nav`
     //dimensao
     width: 100%;
-    display:  ${(props)=> props.toggle === "true" ? "block" : "none" };
+    
 `;
 export const Menu = styled.ul`
     //display

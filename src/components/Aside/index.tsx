@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 type props = {
     toggleFunc:()=>void,
-    toggleMenu:boolean
+    toggle:boolean
 }
 
-export const Aside = ({toggleMenu,toggleFunc}:props) => {
+export const Aside = ({toggle,toggleFunc}:props) => {
     return(
-        <Container toggle={toggleMenu.toString()}>
-            <Nav toggle={toggleMenu.toString()}>
+        <Container toggle={toggle.toString()}>
+            <Nav>
                 <Menu>
                     <MenuOption onClick={toggleFunc}>
                         <Link to="/">Inicio</Link>

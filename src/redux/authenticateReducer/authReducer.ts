@@ -1,17 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {getUser} from "../../data/user"
+
+
 
 
 const slice = createSlice({
     name:"authenticate",
     initialState:{
-        currentUser:true,
-        email:"moraezaugusto@gmail.com",
+        tokenAcess: getUser.tokenAcess,
+        email: getUser.email,
         
     },
     reducers:{
         setUser:(state,action)=>{
             state.email = action.payload.email;
-            state.currentUser = true;
+            state.tokenAcess = true;
+            localStorage.setItem("user", JSON.stringify(state));
         },
         
     }

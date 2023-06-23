@@ -2,9 +2,9 @@ import { Container } from './appStyle';
 import { Routes,Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Aside } from './components/Aside';
-import { AuthPage } from './routes/auth';
+import { AuthPage } from './routes/authentication';
 import { HomePage } from './routes/home';
-import { GamePage } from './routes/gamePage';
+import { GamePage } from './routes/game-page';
 import { useSelector } from 'react-redux';
 import { rootState } from './redux/store';
 import { useState } from 'react';
@@ -13,19 +13,19 @@ import { useState } from 'react';
 const App = () => {
  
   const {currentUser} = useSelector((state:rootState)=>state.auth)
-  const[toggleMenu,setToggleMenu]=useState<boolean>(false);
-  const toggleFunc=(toggleMenu:boolean)=>setToggleMenu(!toggleMenu);
+  const[toggle,setToggle]=useState<boolean>(false);
+  const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
   return (
     <Container>
       {
         currentUser 
         ?
           <>
-            <Header  toggleFunc={()=>toggleFunc(toggleMenu)} />
+            <Header  toggleFunc={()=>toggleFunc(toggle)} />
 
             <Aside 
-            toggleMenu={toggleMenu} 
-            toggleFunc={()=>toggleFunc(toggleMenu)} 
+            toggle={toggle} 
+            toggleFunc={()=>toggleFunc(toggle)} 
             />
 
             <Routes>
@@ -34,7 +34,7 @@ const App = () => {
             </Routes>
           </>  
         :
-        <AuthPage/>
+          <AuthPage/>
       }
     </Container>
   );
