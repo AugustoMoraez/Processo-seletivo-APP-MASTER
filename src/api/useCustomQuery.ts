@@ -1,18 +1,15 @@
-import { rootState } from '../redux/store';
-import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import fetchData from "./fetchData";
-import { game } from '../types/game';
+import { dataFetch } from "../types/dataFetch";
+import { AxiosError } from "axios";
 
-export type data = { data: game[] | undefined; isLoading: boolean; isError: boolean; }
 
-const useCustomQuery = ():data => {
+const useCustomQuery = ():dataFetch => {
     const fetch = () => {
-        
-        const{email}= useSelector((state:rootState)=> state.authenticate);
-        const{data,isLoading,isError} = useQuery("api-data",()=>fetchData(email),{retry:false});
-
-        return {data,isLoading,isError};
+        const{data,isLoading,isError,error} =  useQuery("api-data",()=>fetchData(),
+        {retry:1});
+        const Error = error as AxiosError
+        return {data,isLoading,isError,Error};
     }
     return fetch();
 }

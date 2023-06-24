@@ -2,47 +2,49 @@
 import { Container } from './appStyle';
 import { Header } from './components/header';
 import { Aside } from './components/Aside';
+import { Load } from './components/Loader';
+import { ErrMessage } from './components/ErrorMsg';
 //pages
-import { AuthPage } from './routes/authentication';
 import { HomePage } from './routes/home';
 import { GenrePage } from './routes/genero-filter';
 import { GamePage } from './routes/game-page';
 //libs
 import { Routes,Route } from 'react-router-dom';
-import useCustomQuery from './api/useCustomQuery';
 //hooks
-import { useSelector } from 'react-redux';
 import { useState } from 'react';
-//types 
-import { rootState } from './redux/store';
+import useCustomQuery from './api/useCustomQuery';
+
+
 
 
 const App = () => {
-  const{data,isLoading,isError} = useCustomQuery();
-  const {tokenAcess} = useSelector((state:rootState)=>state.authenticate)
   const[toggle,setToggle]=useState<boolean>(false);
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
+  const{data,isLoading,Error}=useCustomQuery();
+  const games = data ? data : [];
+  
   return (
-    <Container>
-      {
-        tokenAcess 
-        ?
-          <>
-            <Header  toggleFunc={()=>toggleFunc(toggle)} />
-
-            <Aside 
-            toggle={toggle} 
-            toggleFunc={()=>toggleFunc(toggle)} 
-            />
-
-            <Routes>
-              <Route path="/" element={<HomePage data={data} isError={isError} isLoading={isLoading} />} />
-              <Route path="/game/:game" element={<GamePage/>} />
-              <Route path="/filter/:genre" element={<GenrePage/>} />
-            </Routes>
-          </>  
-        :
-          <AuthPage/>
+    <Container> 
+      {isLoading
+      ?
+        <Load/>
+      :
+      Error
+      ?
+      <ErrMessage Error={Error}/>
+      :
+      <>
+        <Header  toggleFunc={()=>toggleFunc(toggle)} />
+        <Aside 
+        toggle={toggle} 
+        toggleFunc={()=>toggleFunc(toggle)} 
+        />
+        <Routes>
+          <Route path="/" element={<HomePage games={games} />} />
+          <Route path="/game/:game" element={<GamePage games={games}/>} />
+          <Route path="/filter/:genre" element={<GenrePage games={games}/>} />
+        </Routes>
+        </>
       }
     </Container>
   );

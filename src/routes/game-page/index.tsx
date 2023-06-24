@@ -1,10 +1,14 @@
 import { Container } from "./style";
+import { game } from "../../types/game";
 
-export const GamePage = () => {
+type prop = {
+    games:game[]
+}
+export const GamePage = ({games}:prop) => {
     
     return(
         <Container>
-            gamePage
+            game
         </Container>
     )
 }

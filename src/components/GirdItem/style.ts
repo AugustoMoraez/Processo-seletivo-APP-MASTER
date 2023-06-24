@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   width: 470px;
-  height: 400px;
+  
   padding: 10px;
   border-radius: 8px;
   overflow: hidden;
@@ -12,7 +12,7 @@ export const CardContainer = styled.div`
 
 export const CoverImage = styled.img`
   width: 100%;
-  height: 60%;
+  height: 250px;
   object-fit: cover;
 `;
 

@@ -5,7 +5,6 @@ export const Container = styled.div`
     //dimensão
     width: 100%;
     height:100px;    
-    margin:auto;
     position: fixed;
     z-index: 98;
     //Display

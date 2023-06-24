@@ -10,7 +10,7 @@ type prop = {
 export const GridItem = ({game}:prop) => {
     const nav = useNavigate();
     const redirect = () => {
-        nav(`filter/${game.id}`)       
+        nav(`game/${game.id}`)       
     }
     return(
         <CardContainer onClick={redirect}>
