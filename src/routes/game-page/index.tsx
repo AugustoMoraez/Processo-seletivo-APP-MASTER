@@ -8,7 +8,9 @@ export const GamePage = ({games}:prop) => {
     
     return(
         <Container>
-            game
+            {games.map((item)=>(
+                <div>{item.id}</div>
+            ))}
         </Container>
     )
 }
