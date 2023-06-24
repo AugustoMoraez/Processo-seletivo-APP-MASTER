@@ -2,6 +2,7 @@ import { Container,FilterFor } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
 import { useParams } from "react-router-dom";
 import { GridItem } from "../../components/GirdItem";
+import { Banner } from "../../components/banner";
 import { game } from "../../types/game";
 
 type prop = {
@@ -17,6 +18,7 @@ export const GenrePage = ({games}:prop) => {
         <>
 
             <Container>
+                <Banner/>
                 <FilterFor>Apenenas: {genre}</FilterFor>
                 <GridContainer>
                     {list.map((game) => (
