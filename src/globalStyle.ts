@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Titillium Web', sans-serif;
 }
 body{
-    background-color: #061E37;
+    background-color: #EDF6FC;
     color:#fefefe;
 }
 a,button,

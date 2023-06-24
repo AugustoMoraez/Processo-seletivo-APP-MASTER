@@ -14,20 +14,25 @@ export const ErrMessage = () => {
     useEffect(()=>{
         api.get("/data/",{headers:{"dev-email-address":email}})
         .then(() => {
+          
           return null;
         })
         .catch((error: AxiosError) => {
           if (error.code === 'ECONNABORTED') {
             setErroMsg("O servidor demorou para responder, tente mais tarde")
-          }else if(error.response?.status === 500||502||503||504||507||508||509){
+          }else if([500,502,503,504,507,508,509].includes(error.response?.status as number)){
             setErroMsg("O servidor fahou em responder, tente recarregar a página")
           }
+          console.log(errorMsg)
         });
     },[email])
 
 
     
     return(
-        <Container>{errorMsg}</Container>
+        <Container>
+          <p>{errorMsg}</p>
+          <a href="/">tente novamente</a> 
+        </Container>
     )
 }

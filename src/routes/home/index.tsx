@@ -21,12 +21,12 @@ export const HomePage = ({data,isLoading,isError}:prop) => {
                 :
                 <GridContainer>
                     {
-                        isError?
-                        <ErrMessage/>
-                        :
-                        data && data.map((item)=>(
-                            <GridItem game={item} key={item.id}/>
-                        ))
+                    isError ?
+                    <ErrMessage/>
+                    :
+                    data && data.map((item)=>(
+                        <GridItem game={item} key={item.id}/>
+                    ))
                     }
                 </GridContainer>
                 

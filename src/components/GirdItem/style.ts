@@ -7,6 +7,7 @@ export const CardContainer = styled.div`
   padding: 10px;
   border-radius: 8px;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const CoverImage = styled.img`
@@ -21,17 +22,17 @@ export const CardContent = styled.div`
   padding: 5px;
 `;
 
-export const GameInfo = styled.h3`
+export const GameInfo = styled.div`
   @media (max-width:400px) {
     margin: auto;
     text-align: center;
   }
 `;
 export const GameName = styled.h3`
-  
   text-align: left;
   font-size: 18px;
-  color: #fefefe;
+  color: #007bff;
+  
 `;
 
 export const CompanyName = styled.p`
@@ -42,6 +43,8 @@ export const CompanyName = styled.p`
 
 export const Button = styled.button`
   padding: 2px 16px;
+  max-width:100px;
+  max-height: 50px;
   border: none;
   background-color: #007bff;
   color: #fff;

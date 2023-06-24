@@ -8,12 +8,12 @@ export type data = { data: game[] | undefined; isLoading: boolean; isError: bool
 
 const useCustomQuery = ():data => {
     const fetch = () => {
-        let request = {}
+        
         const{email}= useSelector((state:rootState)=> state.authenticate);
-        const{data,isLoading,isError} = useQuery("api-data",()=>fetchData(email),{retry: false});
-        return request={data,isLoading,isError};
+        const{data,isLoading,isError} = useQuery("api-data",()=>fetchData(email),{retry:false});
+
+        return {data,isLoading,isError};
     }
-    
     return fetch();
 }
 

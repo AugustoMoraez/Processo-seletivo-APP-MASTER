@@ -7,6 +7,7 @@ export const Container = styled.div`
     position: relative;
 `;
 export const FilterFor = styled.h3`
+    color:#007BFF;
     text-align: center;
     font-size: 20px;
     margin-top:20px ;

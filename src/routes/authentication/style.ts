@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import bg from "../../assets/images/bg2.jpg"
 
 export const Container = styled.div`
     //dimensao
@@ -10,6 +11,10 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    //style
+    background-image: url(${bg});
+    background-position: center;
+    background-size: cover;
     
 `;
 
@@ -19,9 +24,9 @@ export const Fieldset = styled.fieldset`
     max-width: 400px;
     height: 400px;
     //style
-    border: 3px solid #0084FF;
+    border: 3px solid #55B5E4;
     transition: 0.7s;
-    color: #0084FF;
+    color: #55B5E4;
     border-radius: 20px;
     //sub-components
     legend{
@@ -55,7 +60,7 @@ export const Form = styled.div`
         //style
         background: none;
         border: none;
-        border-bottom: 1px solid #0084FF;
+        border-bottom: 1px solid #55B5E4;
         color: #fff;
         font-size: 17px;
     }
@@ -70,13 +75,12 @@ export const Form = styled.div`
         //style
         border-radius: 5px;
         font-weight: 600;
-        background-color: #0084FF;
+        background-color: #55B5E4;
         color: #fff;
         cursor: pointer;
     }
     input[type="submit"]:hover{
-        background-color: #fff;
-        color: #0084FF;
+        opacity: 0.7;
     }
 
 
