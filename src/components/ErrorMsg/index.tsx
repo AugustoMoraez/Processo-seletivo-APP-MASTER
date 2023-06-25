@@ -6,7 +6,7 @@ type prop = {
   Error:AxiosError<unknown, any> | null 
 }
 
-export const ErrMessage = ({Error}:prop) => {
+export const ErroMessage = ({Error}:prop) => {
   const[msgError,setMsgError] = useState("O servidor não conseguirá responder por agora, tente voltar novamente mais tarde");
   
   useEffect(()=>{

@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   width: 470px;
-  
-  padding: 10px;
-  border-radius: 8px;
+  padding: 3px;
+  margin: 3px;
+  transition: 0.5s;
   overflow: hidden;
   cursor: pointer;
+  &:hover{
+    background-color: rgba(0,0,0,0.1);
+  }
 `;
 
 export const CoverImage = styled.img`

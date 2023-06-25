@@ -3,10 +3,10 @@ import { Container } from './appStyle';
 import { Header } from './components/header';
 import { Aside } from './components/Aside';
 import { Load } from './components/Loader';
-import { ErrMessage } from './components/ErrorMsg';
+import { ErroMessage } from './components/ErrorMsg';
 //pages
 import { HomePage } from './routes/home';
-import { GenrePage } from './routes/genero-filter';
+import { GenrePage } from './routes/genero';
 import { GamePage } from './routes/game-page';
 //libs
 import { Routes,Route } from 'react-router-dom';
@@ -31,7 +31,7 @@ const App = () => {
       :
       Error
       ?
-      <ErrMessage Error={Error}/>
+        <ErroMessage Error={Error}/>
       :
       <>
         <Header  toggleFunc={()=>toggleFunc(toggle)} />
