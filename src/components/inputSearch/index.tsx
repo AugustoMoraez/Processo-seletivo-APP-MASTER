@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react";
 import { Container,Input,InputButton } from "./style";
 import {useState} from "react";
 import {BsSearch} from "react-icons/bs";
@@ -16,9 +17,15 @@ export const InputSearch = () => {
         nav(`/search/${gameName}`)
     }
 
+    const PressEnter = (e:KeyboardEvent) => {
+        if(e.key === "Enter"){
+            redirect(inputText)
+        }
+    }
+
     return(
         <Container>
-            <Input onChange={handleInputText} value={inputText} placeholder="Ex: Overwatch 2"/>
+            <Input onKeyDown={PressEnter} onChange={handleInputText} value={inputText} placeholder="Ex: Overwatch 2"/>
             <InputButton onClick={()=>redirect(inputText)}><BsSearch/></InputButton>
         </Container>
     )
