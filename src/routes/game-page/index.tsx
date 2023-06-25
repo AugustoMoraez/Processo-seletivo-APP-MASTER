@@ -1,4 +1,5 @@
 import { Container,SubContainer,Thumbnail,Title,Description,Details,DownloadLink,InfoContainer, FlexContainer, FlexItem } from "./style";
+import { InputSearch } from "../../components/inputSearch";
 import { game } from "../../types/game";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -18,8 +19,8 @@ export const GamePage = ({games}:prop) => {
 
   return(
     <Container>
+      <InputSearch/>
       <SubContainer>
-
         <InfoContainer>
           <Thumbnail src={game.thumbnail} alt={game.title}/>
         </InfoContainer>
@@ -43,7 +44,7 @@ export const GamePage = ({games}:prop) => {
           </DownloadLink>
         </InfoContainer>
       </SubContainer>
-      <h2>Porque você escolheu <span>{game.title}</span></h2>
+      <h2>Porque você escolheu <br /> <span>{game.title}</span></h2>
       <SubContainer>
         <FlexContainer>
           {ListRecomended.length > 0 ?

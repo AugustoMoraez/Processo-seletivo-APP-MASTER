@@ -3,6 +3,7 @@ import { GridContainer } from "../../components/GridContainer/style";
 import { useParams } from "react-router-dom";
 import { GridItem } from "../../components/GirdItem";
 import { Banner } from "../../components/banner";
+import { InputSearch } from "../../components/inputSearch";
 import { game } from "../../types/game";
 
 type prop = {
@@ -19,6 +20,7 @@ export const GenrePage = ({games}:prop) => {
 
             <Container>
                 <Banner/>
+                <InputSearch/>
                 <FilterFor>Apenenas: {genre}</FilterFor>
                 <GridContainer>
                     {list.map((game) => (

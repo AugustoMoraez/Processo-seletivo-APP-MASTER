@@ -7,7 +7,8 @@ import { ErroMessage } from './components/ErrorMsg';
 //pages
 import { HomePage } from './routes/home';
 import { GenrePage } from './routes/genero';
-import { GamePage } from './routes/game-page';
+import { GamePage } from './routes/game-page';;
+import {SearchPage} from './routes/search';
 //libs
 import { Routes,Route } from 'react-router-dom';
 //hooks
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/" element={<HomePage games={games} />} />
           <Route path="/game/:game" element={<GamePage games={games}/>} />
           <Route path="/filter/:genre" element={<GenrePage games={games}/>} />
+          <Route path="/search/:itemSearch" element={<SearchPage games={games}/>} />
         </Routes>
         </>
       }
