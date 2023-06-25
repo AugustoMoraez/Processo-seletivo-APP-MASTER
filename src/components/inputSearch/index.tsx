@@ -15,15 +15,10 @@ export const InputSearch = () => {
     const redirect = (gameName:string) => {
         nav(`/search/${gameName}`)
     }
-    const searchForEnter = (e:React.KeyboardEventHandler<HTMLInputElement>)=> {
-        if(e.key === 'Enter'){
-            redirect(inputText)
-        }
-    }
 
     return(
         <Container>
-            <Input onKeyDown={searchForEnter} onChange={handleInputText} value={inputText} placeholder="Ex: Overwatch 2"/>
+            <Input onChange={handleInputText} value={inputText} placeholder="Ex: Overwatch 2"/>
             <InputButton onClick={()=>redirect(inputText)}><BsSearch/></InputButton>
         </Container>
     )
