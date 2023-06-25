@@ -1,6 +1,16 @@
-#Instalação e uso
+# Dependencias 
+- npm i -g typescript
+
+# Instalação e uso
 - npm install
 - npm run dev
+
+# Bibliotecas usadas
+- Styled-components
+- React-Router-Dom
+- React-Query
+- Axios
+
 
 #Imagens do projeto
 
