@@ -6,13 +6,13 @@
 
 - Home
 <h1>
-    <img src="https://drive.google.com/file/d/1Js28V3TlCgWHBckud9mLhwpdnrw9MnhH/view">
+    <img src="./public/readme-imgs/home.png">
 </h1>
 - Game Page
 <h1>
-    <img src="https://drive.google.com/file/d/1O7CUXIcBoSjq4l0TGY0XSWH-fBRKPMsn/view">
+    <img src="./public/readme-imgs/gam-%20page.png">
 </h1>
 - Area de Busca
 <h1>
-    <img src="https://drive.google.com/file/d/1KHv8cTMvWkgiYJOkRwE9n25ymOZu58nR/view?usp=drive_link">
+    <img src="./public/readme-imgs/search-area.png">
 </h1>
