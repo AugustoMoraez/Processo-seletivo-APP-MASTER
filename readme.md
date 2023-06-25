@@ -8,6 +8,7 @@
 # Bibliotecas usadas
 - Styled-components
 - React-Router-Dom
+- React-Icons
 - React-Query
 - Axios
 
