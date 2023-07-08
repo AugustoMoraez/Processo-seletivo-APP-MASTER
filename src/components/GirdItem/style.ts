@@ -2,63 +2,48 @@ import styled from 'styled-components';
 
 
 export const CardContainer = styled.div`
-  width: 470px;
-  padding: 3px;
-  margin: 3px;
-  transition: 0.5s;
-  overflow: hidden;
-  cursor: pointer;
+  width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    transition: all 0.5s ease 0s;
   &:hover{
-    background-color: rgba(0,0,0,0.1);
+    box-shadow: 2px 0px 20px #333;
   }
 `;
 
 export const CoverImage = styled.img`
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  border-radius: 10px;
 `;
 
 export const CardContent = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content:left;
+  flex-direction: column;
+  align-items: left;
   padding: 5px;
-`;
-
-export const GameInfo = styled.div`
-  @media (max-width:400px) {
-    margin: auto;
-    text-align: center;
+  h1{
+    font-size: 20px;
+    font-weight: 500;
   }
-`;
-export const GameName = styled.h3`
-  text-align: left;
-  font-size: 18px;
-  color: #007bff;
-  
-`;
-
-export const CompanyName = styled.p`
-  margin: 2px 0;
-  font-size: 14px;
-  color: #666;
-`;
-
-export const Button = styled.button`
-  padding: 2px 16px;
-  max-width:100px;
-  max-height: 50px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
+  p{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
   }
-  @media (max-width:400px) {
-    display:none ;
+  span{
+    font-weight: 200;
+  }
+  button{
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color:#007BFF;
   }
 `;

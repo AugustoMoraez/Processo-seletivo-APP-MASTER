@@ -7,14 +7,13 @@ export const Container = styled.div`
   justify-content: space-between;
   //style
   border-radius: 8px;
-  background-color: #f8f8f8;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
   color: #333;
   //dimensao
   padding: 16px;
   width:100%;
   min-height: 100vh;
-  max-width: 1140px;
+  max-width:970px;
   margin: auto;
   padding-top: 120px;
   //sub-components
@@ -49,7 +48,7 @@ export const Thumbnail = styled.img`
   margin: auto;
   margin-bottom: 16px;
   //style
-  border-radius: 4px;
+  border-radius: 10px;
 `;
 
 export const Title = styled.h1`
@@ -164,4 +163,5 @@ export const FlexItem = styled.div<prop>`
   max-width:300px;
   height:150px;
   margin: 5px;
+  border-radius: 10px;
 `;

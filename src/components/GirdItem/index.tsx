@@ -1,5 +1,6 @@
-import {Button,CardContainer,CoverImage,GameName,CompanyName,CardContent,GameInfo} from "./style";
+import {CardContainer,CoverImage,CardContent} from "./style";
 import { game } from "../../types/game";
+import {AiOutlineRight} from "react-icons/ai"
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,11 +17,10 @@ export const GridItem = ({game}:prop) => {
         <CardContainer onClick={redirect}>
         <CoverImage src={game.thumbnail} alt={game.title} />
         <CardContent>
-          <GameInfo>
-          <GameName>{game.title}</GameName>
-          <CompanyName>{game.developer}</CompanyName>
-          </GameInfo>
-          <Button>Information</Button>
+          <h1>{game.title}</h1>
+          <span>{`${game.developer} - ${game.genre}`}</span>
+          <p>{game.short_description}</p>
+          <button>More info  <AiOutlineRight/> </button>
         </CardContent>
       </CardContainer>
     )
