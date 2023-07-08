@@ -1,15 +1,29 @@
-import { Container,FormContainer,FormHeader,FormBody,FormFooter,InputContainer } from "./style";
+//components
+import { Container,FormContainer,FormHeader,FormBody,InputContainer } from "../style";
+import { ModalMensage } from "../../ModalErrorMsg";
+import { Load } from "../../Loader";
+//react
+import {useState} from "react"
+
+//router
 import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+//yup and react hook form
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { singInData } from "../../../types/AuthForm";
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from "../../../services/firebaseConfig";
+//types
+import { singInData } from "../../../types/AuthForm";
 
 
 export const RegisterPage = () => {
     
+    const[errorModalEmail,setErrorModalEmail] = useState(false);    
+    const[errorModalPassword,setErrorModalPassword] = useState(false);    
+
     const [
     createUserWithEmailAndPassword,
     user,
@@ -24,26 +38,49 @@ export const RegisterPage = () => {
     });
 
     const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<singInData>({
-        resolver: yupResolver(schema),
-      })
+    register,
+    handleSubmit,
+    formState: { errors },
+    } = useForm<singInData>({
+    resolver: yupResolver(schema),
+    })
+
+    const nav = useNavigate();
 
     const onSubmit = (data:singInData) => {
         if(data.password === data.repeatedPassword){
-            createUserWithEmailAndPassword(data.email,data.password)
+            createUserWithEmailAndPassword(data.email,data.password);  
         }else{
-            console.log("erro")
+            setErrorModalPassword(true)
+        }
+
+        if(error){
+            setErrorModalEmail(true)
+        }
+        
+        if(user){
+            console.log(user.user)
+            nav("/");
         }
     }
 
+    
     return(
         <Container>
+            
+            <ModalMensage 
+            msg="invalid email or already in use" 
+            toggle={errorModalEmail}
+            func={()=>setErrorModalEmail(false)}
+            />
+            <ModalMensage 
+            msg="Passwords must be identical" 
+            toggle={errorModalPassword}
+            func={()=>setErrorModalPassword(false)}
+            />
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <FormHeader>
-                    <h1>GameDev</h1>
+                    <h1>Your Account</h1>
                     <span>fill in your details to proceed</span>
                 </FormHeader>
                 <FormBody>
@@ -80,10 +117,7 @@ export const RegisterPage = () => {
                         <input type="submit" value="SingIn"  />
                     </InputContainer>
                 </FormBody>
-                <FormFooter>
-                    <p>Do you have a registration?</p>
-                    <Link to="/login">LogIn here</Link>
-                </FormFooter>
+                
             </FormContainer>
         </Container>
     )

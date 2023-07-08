@@ -1,23 +1,12 @@
 import { Container,Nav,Menu,MenuOption } from "./style";
 import { useNavigate } from "react-router-dom";
+import {BiSolidUserCircle} from "react-icons/bi"
+import {genres} from "../../data/genres" 
 
 type props = {
     toggleFunc:()=>void,
     toggle:boolean
 }
-
-const genre = [
-    'Shooter',
-    'MMOARPG',
-    'ARPG',
-    'Fighting',
-    'Action RPG',
-    'Battle Royale',
-    'MMORPG',
-    'MOBA',
-    'Sports'
-]
-
 
 export const Aside = ({toggle,toggleFunc}:props) => {
 
@@ -35,13 +24,20 @@ export const Aside = ({toggle,toggleFunc}:props) => {
         <Container toggle={toggle.toString()}>
             <Nav>
                 <Menu>
+                    <MenuOption onClick={()=>{nav("/auth/"),toggleFunc()}}>
+                        <span>
+                            <BiSolidUserCircle/>Entrar
+                        </span>
+                    </MenuOption>
                     <h3>Filters:</h3>
                     <MenuOption onClick={()=>{nav("/"),toggleFunc()}}>
-                        All
+                        <p>All</p>
                     </MenuOption>
-                    {genre.map((item,index)=>(
+                    {genres.map((item,index)=>(
                         <MenuOption onClick={redirect} key={index}>
-                            {item}
+                            <p>
+                                {item}
+                            </p>
                         </MenuOption>
                     ))}
 

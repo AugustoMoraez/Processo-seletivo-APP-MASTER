@@ -42,6 +42,7 @@ export const Menu = styled.ul`
     align-items: center;
 `;
 export const MenuOption = styled.li`
+    
     //dimensao e posição
     width: 100%;
     text-align: center;
@@ -50,7 +51,17 @@ export const MenuOption = styled.li`
     transition: 0.5s;
     font-weight: 100;
 
-    
+    //sub-components
+    span{
+        font-size: 30px;
+        //display
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        margin: auto;
+    }
+   
     //hover
     &:hover{
         cursor: pointer;

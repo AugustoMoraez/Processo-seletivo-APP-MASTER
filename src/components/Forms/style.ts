@@ -2,11 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    
     padding: 10px;
+    margin-top: auto;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-height:708px) {
+        margin-top: 20px;
+        margin-bottom: auto;
+    }
 `;
 export const FormContainer = styled.form`
     width: 100%;
@@ -26,17 +32,22 @@ export const FormHeader = styled.div`
     h1{
         color:#0084FF;
         font-size: 50px;
+        text-align: center;
         cursor: default;
     }
     span{
         cursor: default;
         color:#333;
+        text-align: center;
         font-weight: 600;
     }
+    @media (max-width:330px) {
+        h1{
+            font-size: 30px;
+        } 
+    }
 `;
-export const FormBody = styled.div`
-  
-`;
+
 export const InputContainer = styled.div`
     width: 100% ;
     display: flex;
@@ -72,13 +83,4 @@ export const InputContainer = styled.div`
     }
     
 `;
-
-export const FormFooter = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    a{
-        color:#5C73DB;
-    }
-`;
+export const FormBody = styled.div``;
