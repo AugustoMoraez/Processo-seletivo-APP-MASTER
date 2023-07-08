@@ -9,8 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Titillium Web', sans-serif;
 }
 body{
-    background-color: #EDF6FC;
-    color:#fefefe;
+    background-color: #fff;
+    color:#333;
 }
 a,button,
 input[type="email"],

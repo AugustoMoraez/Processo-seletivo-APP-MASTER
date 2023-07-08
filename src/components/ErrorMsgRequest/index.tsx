@@ -8,16 +8,16 @@ type prop = {
 }
 
 export const ErroMessage = ({Error}:prop) => {
-  const[msgError,setMsgError] = useState("O servidor não conseguirá responder por agora, tente voltar novamente mais tarde");
+  const[msgError,setMsgError] = useState("The server will not be able to respond for now, please try to come back later.");
   
   useEffect(()=>{
     const arrayErros = [500,502,503,504,507,508,509];
     if(Error){ 
       if(Error.code === "ECONNABORTED"){
-        setMsgError("O servidor demorou para responder, tente mais tarde");
+        setMsgError("The server took a while to respond, please try again later");
       }
       if(Error.response?.status && arrayErros.includes(Error.response?.status)){
-        setMsgError("O servidor fahou em responder, tente recarregar a página")
+        setMsgError("The server failed to respond, try reloading the page")
       }
     }
   },[])
@@ -26,6 +26,7 @@ export const ErroMessage = ({Error}:prop) => {
   return(
       <Container>
         <p>{msgError}</p>
+        <a href="/">Try again</a>
       </Container>
   )
 }

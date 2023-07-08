@@ -6,5 +6,16 @@ export const Container = styled.div`
     flex-direction: column;
     text-align: center;
     font-weight: 600;
-    color:#333
+    color:#333;
+    a{
+        color: #fff;
+        background-color: #007BFF;
+        padding: 3px 6px;
+        max-width: 100px;
+        margin: auto;
+        border-radius: 10px;
+        &:hover{
+            opacity: 0.7;
+        }
+    }
 `;
