@@ -4,9 +4,18 @@ import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { singInData } from "../../../types/AuthForm";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from "../../../services/firebaseConfig";
 
 
 export const RegisterPage = () => {
+    
+    const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const schema = yup.object({
         email:yup.string().required("Required field"),
@@ -23,8 +32,13 @@ export const RegisterPage = () => {
       })
 
     const onSubmit = (data:singInData) => {
-        console.log(data)
+        if(data.password === data.repeatedPassword){
+            createUserWithEmailAndPassword(data.email,data.password)
+        }else{
+            console.log("erro")
+        }
     }
+
     return(
         <Container>
             <FormContainer onSubmit={handleSubmit(onSubmit)}>

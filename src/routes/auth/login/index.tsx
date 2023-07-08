@@ -4,8 +4,17 @@ import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { loginData } from "../../../types/AuthForm";
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {auth} from "../../../services/firebaseConfig"
 
 export const LoginPage = () => {
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
 
     const schema = yup.object({
         email:yup.string().required("Required field"),
@@ -21,7 +30,10 @@ export const LoginPage = () => {
       })
 
     const onSubmit = (data:loginData) => {
-        console.log(data)
+        signInWithEmailAndPassword(data.email,data.password)
+        if(error){
+            console.log(error.message)
+        }
     }
     return(
         <Container>

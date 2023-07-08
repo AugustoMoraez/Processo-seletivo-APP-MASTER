@@ -3,7 +3,8 @@ import { AxiosError } from "axios";
 import {useState,useEffect} from "react"
 
 type prop = {
-  Error:AxiosError<unknown, any> | null 
+  Error:AxiosError<unknown, any> | null,
+  
 }
 
 export const ErroMessage = ({Error}:prop) => {
