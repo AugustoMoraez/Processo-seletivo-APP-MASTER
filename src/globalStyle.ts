@@ -14,7 +14,9 @@ body{
 }
 a,button,
 input[type="email"],
+input[type="password"],
 input[type="submit"]{
+    background: none;
     border: 0px;
     outline: none;
     text-decoration: none;

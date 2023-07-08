@@ -14,7 +14,9 @@ export const InputSearch = () => {
         setInputText(e.target.value);
     }
     const redirect = (gameName:string) => {
-        nav(`/search/${gameName}`)
+        if(gameName !== ""){
+            nav(`/search/${gameName}`)
+        }
     }
 
     const PressEnter = (e:KeyboardEvent) => {

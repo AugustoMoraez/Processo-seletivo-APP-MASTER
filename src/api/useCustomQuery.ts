@@ -6,10 +6,10 @@ import { AxiosError } from "axios";
 
 const useCustomQuery = ():dataFetch => {
     const fetch = () => {
-        const{data,isLoading,isError,error} =  useQuery("api-data",()=>fetchData(),
+        const{data,isLoading,error} =  useQuery("api-data",()=>fetchData(),
         {retry:1});
         const Error = error as AxiosError
-        return {data,isLoading,isError,Error};
+        return {data,isLoading,Error};
     }
     return fetch();
 }
