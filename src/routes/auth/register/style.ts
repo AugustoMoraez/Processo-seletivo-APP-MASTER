@@ -41,13 +41,15 @@ export const InputContainer = styled.div`
     width: 100% ;
     display: flex;
     flex-direction: column;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
+    span{
+        color:#ff000f;
+    }
     input{
         width: 100%;
         border-radius: 12px;
         border: 1px solid #E4E4E7;
         padding:4px 10px;
-        margin-bottom: 20px;
         box-shadow: 0px 0px 2px #333;
     }
     input[type="submit"]{

@@ -35,9 +35,9 @@ export const Aside = ({toggle,toggleFunc}:props) => {
         <Container toggle={toggle.toString()}>
             <Nav>
                 <Menu>
-                    <h3>Filtros por gênero:</h3>
+                    <h3>Filters:</h3>
                     <MenuOption onClick={()=>{nav("/"),toggleFunc()}}>
-                        TODOS
+                        All
                     </MenuOption>
                     {genre.map((item,index)=>(
                         <MenuOption onClick={redirect} key={index}>

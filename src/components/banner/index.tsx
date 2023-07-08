@@ -9,13 +9,13 @@ export const Banner = () => {
                 <ContainerDescription>
                     <Title>League of Legends</Title>
                     <Description>
-                        Junte-se a milhões de jogadores e embarque em emocionantes partidas em League of Legends.
-                         Escolha seu campeão,
-                        domine habilidades únicas e vença seus oponentes. Não perca tempo, teste agora mesmo!
+                    Join millions of players and embark on exciting matches in League of Legends. 
+                    Choose your champion, 
+                    master unique skills and defeat your opponents. Don't waste time, test it right now!
                     </Description>
                 </ContainerDescription>
                 <Button href="https://www.freetogame.com/runeterra" target="_blank">
-                    Ver Mais
+                    Show more
                 </Button>
             </ContentContainer>
         </BannerContainer>

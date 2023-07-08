@@ -1,34 +1,64 @@
-import React from "react";
 import { Container,FormContainer,FormHeader,FormBody,FormFooter,InputContainer } from "./style";
 import {Link} from "react-router-dom";
+import {useForm} from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import { loginData } from "../../../types/AuthForm";
 
 export const LoginPage = () => {
-    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+
+    const schema = yup.object({
+        email:yup.string().required("Required field"),
+        password:yup.string().required("Required field").min(8,"Passwords have at least 8 characters")
+    });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm<loginData>({
+        resolver: yupResolver(schema),
+      })
+
+    const onSubmit = (data:loginData) => {
+        console.log(data)
     }
     return(
         <Container>
-            <FormContainer onSubmit={handleSubmit}>
+            <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <FormHeader>
                     <h1>GameDev</h1>
-                    <span>Preencha seus dados para prosseguir</span>
+                    <span>fill in your details to proceed</span>
                 </FormHeader>
                 <FormBody>
                     <InputContainer>
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="email@email.com.br" />
+                        <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="email@email.com.br"
+                        {...register("email")}
+                        />
+                        <span>{errors?.email?.message}</span>
                     </InputContainer>
                     <InputContainer>
-                        <label htmlFor="password">Senha</label>
-                        <input minLength={8} maxLength={8} type="password" name="password" id="password" placeholder="********" />
+                        <label htmlFor="password">Password</label>
+                        <input 
+                        maxLength={8}
+                        type="password" 
+                        id="password" 
+                        placeholder="********" 
+                        {...register("password")}
+                        />
+                        <span>{errors?.password?.message}</span>
                     </InputContainer>
                     <InputContainer>
-                        <input type="submit" value="Entrar"  />
+                        <input type="submit" value="Log In"  />
                     </InputContainer>
                 </FormBody>
                 <FormFooter>
-                    <p>Não possui cadastro?</p>
-                    <Link to="/register">cadastre-se aqui</Link>
+                    <p>Don't have a registration?</p>
+                    <Link to="/register">register here</Link>
                 </FormFooter>
             </FormContainer>
         </Container>

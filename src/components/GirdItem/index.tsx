@@ -20,7 +20,7 @@ export const GridItem = ({game}:prop) => {
           <GameName>{game.title}</GameName>
           <CompanyName>{game.developer}</CompanyName>
           </GameInfo>
-          <Button>informação</Button>
+          <Button>Information</Button>
         </CardContent>
       </CardContainer>
     )

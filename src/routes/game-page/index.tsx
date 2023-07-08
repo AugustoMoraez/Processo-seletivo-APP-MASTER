@@ -28,23 +28,23 @@ export const GamePage = ({games}:prop) => {
           <Title>{game.title}</Title>
           <Description>{game.short_description}</Description>
           <Details>
-            <strong>Data de Lançamento:</strong> {game.release_date}
+            <strong>Realease date:</strong> {game.release_date}
           </Details>
           <Details>
-            <strong>Plataformas:</strong> {game.platform}
+            <strong>Platform:</strong> {game.platform}
           </Details>
           <Details>
-            <strong>Gênero:</strong> {game.genre}
+            <strong>Genre:</strong> {game.genre}
           </Details>
           <Details>
-            <strong>Desenvolvedora:</strong> {game.developer}
+            <strong>Developer:</strong> {game.developer}
           </Details>
           <DownloadLink href={game.freetogame_profile_url} target="_blank" rel="noopener noreferrer">
-            Jogo
+            Game
           </DownloadLink>
         </InfoContainer>
       </SubContainer>
-      <h2>Porque você escolheu <br /> <span>{game.title}</span></h2>
+      <h2>Why did you choose <br /> <span>{game.title}</span></h2>
       <SubContainer>
         <FlexContainer>
           {ListRecomended.length > 0 ?
@@ -52,7 +52,7 @@ export const GamePage = ({games}:prop) => {
               <FlexItem key={item.id} tumb={item.thumbnail} onClick={()=>nav(`/game/${item.title}`)}/>
             ))
             :
-            <div>Sem recomendações</div>
+            <div>No recommendations</div>
           }
         </FlexContainer>
       </SubContainer>

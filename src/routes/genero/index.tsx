@@ -21,7 +21,7 @@ export const GenrePage = ({games}:prop) => {
             <Container>
                 <Banner/>
                 <InputSearch/>
-                <FilterFor>Apenenas: {genre}</FilterFor>
+                <FilterFor>Just: {genre}</FilterFor>
                 <GridContainer>
                     {list.map((game) => (
                         <GridItem game={game} key={game.id} />

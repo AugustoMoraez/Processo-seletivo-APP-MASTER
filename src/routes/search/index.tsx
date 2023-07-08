@@ -25,7 +25,7 @@ export const SearchPage = ({games}:prop) => {
                         <GridItem game={item} key={item.id}/>
                     ))
                     :
-                    <div>Nenhum resultado para: {gameName}</div>
+                    <div>No results for: {gameName}</div>
                 }
             </GridContainer>
         </Container>
