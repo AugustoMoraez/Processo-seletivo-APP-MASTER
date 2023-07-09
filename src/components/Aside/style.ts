@@ -10,10 +10,11 @@ export const Container = styled.aside<props>`
     max-width: ${(props)=> props.toggle === "true" ? "20vw" : "0px" };
     height: 100vh;
     top:100px ;
+    
     right: 0px;
     position: absolute;
     position: fixed;
-    
+    overflow: scroll;
     z-index: 99;
     //style
     background-color: #4BA6FB;

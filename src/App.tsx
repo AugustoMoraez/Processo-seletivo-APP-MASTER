@@ -4,6 +4,7 @@ import { Header } from './components/header';
 import { Aside } from './components/Aside';
 import { Load } from './components/Loader';
 import { ErroMessage } from './components/ErrorMsgRequest';
+import { Footer } from './components/footer';
 //pages
 import {AuthPage} from './routes/auth/index';
 import { HomePage } from './routes/home';
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/filter/:genre" element={<GenrePage games={games}/>} />
         <Route path="/search/:itemSearch" element={<SearchPage games={games}/>} />
       </Routes>
+      <Footer/>
     </Container>
   );
 };
