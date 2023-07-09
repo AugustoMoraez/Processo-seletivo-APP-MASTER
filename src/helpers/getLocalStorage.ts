@@ -1,4 +1,4 @@
-export const getTokenUser = (key:string) => {
+export const getLocalStorage = (key:string):any => {
     let dataJSON:string | null = localStorage.getItem(key);
     
     let data = dataJSON !== null ? JSON.parse(dataJSON) : [];
@@ -6,4 +6,4 @@ export const getTokenUser = (key:string) => {
     return data;
    
 }
-export default getTokenUser;
+export default getLocalStorage;

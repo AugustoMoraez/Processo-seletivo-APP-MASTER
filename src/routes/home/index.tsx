@@ -20,7 +20,7 @@ export const HomePage = ({gamesList}:prop) => {
             <InputSearch/>
             <GridContainer>
                 {gamesList.map((item)=>(
-                    <GridItem game={item.game} key={item.game.id}/>
+                    <GridItem item={item} key={item.game.id}/>
                 ))} 
             </GridContainer>
         </Container>

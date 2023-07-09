@@ -118,6 +118,7 @@ export const DownloadLink = styled.a`
   background-color: #007BFF;
   transition: 0.5s;
   border-radius: 4px;
+  border:1px solid #007BFF;
   
   &:hover {
     background-color: #fff;

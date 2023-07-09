@@ -9,7 +9,6 @@ export const CardContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     transition: all 0.5s ease 0s;
   &:hover{
-    cursor: pointer;
     box-shadow: 2px 0px 20px #333;
   }
   

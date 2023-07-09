@@ -51,14 +51,14 @@ export const Aside = ({toggle,toggleFunc}:props) => {
                 <Menu>
                     <MenuOption onClick={()=>{handleAuth(),toggleFunc()}}>
                         {
-                            token === null 
+                            token === typeof(String) 
                             ?
                             <span>
-                                <BiSolidUserCircle/>LogIn
+                                <BiSolidUserCircle/>Logout
                             </span>
                             :
                             <span>
-                                <BiSolidUserCircle/>Logout
+                                <BiSolidUserCircle/>LogIn
                             </span>
                         }
                     </MenuOption>

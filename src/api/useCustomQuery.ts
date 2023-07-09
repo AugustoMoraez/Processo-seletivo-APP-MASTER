@@ -17,7 +17,8 @@ const useCustomQuery = ():dataFetch => {
             listGames.push({
                 game:item,
                 favorite:false,
-                avaliation:undefined
+                stars:undefined,
+                inFavoriteList:false
             })
         })
 

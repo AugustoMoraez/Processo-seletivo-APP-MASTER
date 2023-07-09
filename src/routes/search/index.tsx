@@ -26,7 +26,7 @@ export const SearchPage = ({gamesList}:prop) => {
             <GridContainer>
                     {resultsOfSearch.length > 0 ? 
                     resultsOfSearch.map((item)=>(
-                        <GridItem game={item.game} key={item.game.id}/>
+                        <GridItem item={item } key={item.game.id}/>
                     ))
                     :
                     <div>No results for: {gameName}</div>

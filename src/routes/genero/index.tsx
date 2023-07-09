@@ -30,7 +30,7 @@ export const GenrePage = ({gamesList}:prop) => {
                 <FilterFor>Just: {genre}</FilterFor>
                 <GridContainer>
                     {listGames.map((item) => (
-                        <GridItem game={item.game} key={item.game.id} />
+                        <GridItem item={item } key={item.game.id} />
                     ))}
                 </GridContainer>
             </Container>
