@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 body{
     background-color: #fff;
-    color:#333;
+    color:#fefefe;
 }
 a,button,
 input[type="email"],

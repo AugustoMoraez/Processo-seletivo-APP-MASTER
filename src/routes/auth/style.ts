@@ -52,21 +52,21 @@ type optionForm = {
 export const SingIn = styled.div<optionForm>`
     flex: 1;
     transition: 0.2s;
-    color: ${props => props.selected === "SingIn" ? "#fff" : "#333" };
+    color: ${props => props.selected === "SingIn" ? "#333" : "#fff" };
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 600;
-    background-color: ${props => props.selected === "SingIn" ? "#0084FF" : "#fff" };
+    background-color: ${props => props.selected === "SingIn" ? '#fff' : "#0084FF" };
     cursor: pointer;
    
     
 `;
 export const LogIn = styled.div<optionForm>`
     flex: 1;
-    background-color: ${props => props.selected === "LogIn" ? "#0084FF" : "#fff" };
+    background-color: ${props => props.selected === "LogIn" ? "#fff" : "#0084FF" };
     transition: 0.2s;
-    color: ${props => props.selected === "LogIn" ? "#fff" : "#333" };
+    color: ${props => props.selected === "LogIn" ? "#333" : "#fff" };
     display: flex;
     justify-content: center;
     align-items: center;

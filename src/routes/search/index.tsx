@@ -7,6 +7,7 @@ import { game } from "../../types/game";
 import { getItemSearch } from "../../helpers/getItemSearch";
 
 
+
 type prop ={
     games:game[]
 }
@@ -14,6 +15,9 @@ type prop ={
 export const SearchPage = ({games}:prop) => {
     const params = useParams();
     const gameName = params.itemSearch as string;
+
+    
+
     const resultsOfSearch = getItemSearch(gameName,games);
     return(
         <Container>

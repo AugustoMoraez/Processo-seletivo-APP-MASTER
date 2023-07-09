@@ -1,7 +1,11 @@
 import { Container,Nav,Menu,MenuOption } from "./style";
 import { useNavigate } from "react-router-dom";
-import {BiSolidUserCircle} from "react-icons/bi"
-import {genres} from "../../data/genres" 
+import {BiSolidUserCircle} from "react-icons/bi";
+import {genres} from "../../data/genres";
+import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
+import {setCurrentUser} from "../../redux/reducers/userReducer"
+import { RootState } from "../../redux/store";
 
 type props = {
     toggleFunc:()=>void,
@@ -9,8 +13,11 @@ type props = {
 }
 
 export const Aside = ({toggle,toggleFunc}:props) => {
-
+    
+    const{token} = useSelector((state:RootState) => state.user )
+    const dispatch = useDispatch();
     const nav = useNavigate();
+   
     const redirect = (e:React.MouseEvent<HTMLLIElement>) => {
        
         toggleFunc();
@@ -20,14 +27,33 @@ export const Aside = ({toggle,toggleFunc}:props) => {
        
     }
 
+    const handleAuth = () => {
+        if(token !== null){
+            dispatch(setCurrentUser(null))
+            nav("/auth/")
+        }else{
+            nav("/auth/")
+        }
+    }
     return(
+
+
+
         <Container toggle={toggle.toString()}>
             <Nav>
                 <Menu>
-                    <MenuOption onClick={()=>{nav("/auth/"),toggleFunc()}}>
-                        <span>
-                            <BiSolidUserCircle/>Entrar
-                        </span>
+                    <MenuOption onClick={()=>{handleAuth(),toggleFunc()}}>
+                        {
+                            token === null 
+                            ?
+                            <span>
+                                <BiSolidUserCircle/>LogIn
+                            </span>
+                            :
+                            <span>
+                                <BiSolidUserCircle/>Logout
+                            </span>
+                        }
                     </MenuOption>
                     <h3>Filters:</h3>
                     <MenuOption onClick={()=>{nav("/"),toggleFunc()}}>

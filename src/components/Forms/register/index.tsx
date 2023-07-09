@@ -17,6 +17,9 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from "../../../services/firebaseConfig";
 //types
 import { singInData } from "../../../types/AuthForm";
+//redux
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../../../redux/reducers/userReducer";
 
 
 export const RegisterPage = () => {
@@ -46,7 +49,7 @@ export const RegisterPage = () => {
     })
 
     const nav = useNavigate();
-
+    const dispatch = useDispatch();
     const onSubmit = (data:singInData) => {
         if(data.password === data.repeatedPassword){
             createUserWithEmailAndPassword(data.email,data.password);  
@@ -58,8 +61,8 @@ export const RegisterPage = () => {
             setErrorModalEmail(true)
         }
         
-        if(user){
-            console.log(user.user)
+        if(user !== undefined){
+            dispatch(setCurrentUser(user.user.uid))
             nav("/");
         }
     }

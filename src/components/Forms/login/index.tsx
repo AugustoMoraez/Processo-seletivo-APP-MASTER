@@ -2,7 +2,8 @@
 import { Container,FormContainer,FormHeader,FormBody,InputContainer } from "../style";
 import { ModalMensage } from "../../ModalErrorMsg";
 
-
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../../../redux/reducers/userReducer";
 //hooks react
 import {useState} from "react"
 //hooks Router
@@ -41,14 +42,15 @@ export const LoginPage = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const nav = useNavigate();
+    const dispatch = useDispatch();
     const onSubmit = (data:loginData) => {
         signInWithEmailAndPassword(data.email,data.password)
         if(error){
             setErrorModal(!errorModal)
         }
         if(user !== undefined){
-            console.log(user.user)
-            nav("/")
+            dispatch(setCurrentUser(user.user.uid))
+            nav("/");
         }
     }
 
