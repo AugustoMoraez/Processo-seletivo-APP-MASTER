@@ -6,7 +6,6 @@ import { Load } from "../../Loader";
 import {useState} from "react"
 
 //router
-import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 //yup and react hook form
@@ -23,7 +22,9 @@ import { setCurrentUser } from "../../../redux/reducers/userReducer";
 
 
 export const RegisterPage = () => {
-    
+
+    const nav = useNavigate();
+    const dispatch = useDispatch();
     const[errorModalEmail,setErrorModalEmail] = useState(false);    
     const[errorModalPassword,setErrorModalPassword] = useState(false);    
 
@@ -39,7 +40,6 @@ export const RegisterPage = () => {
         password:yup.string().required("Required field").min(8,"Passwords have at least 8 characters"),
         repeatedPassword:yup.string().required("Required field").min(8,"Passwords have at least 8 characters")
     });
-
     const {
     register,
     handleSubmit,
@@ -48,17 +48,18 @@ export const RegisterPage = () => {
     resolver: yupResolver(schema),
     })
 
-    const nav = useNavigate();
-    const dispatch = useDispatch();
+
+    
     const onSubmit = (data:singInData) => {
         if(data.password === data.repeatedPassword){
-            createUserWithEmailAndPassword(data.email,data.password);  
+             createUserWithEmailAndPassword(data.email,data.password);  
         }else{
             setErrorModalPassword(true)
         }
 
         if(error){
             setErrorModalEmail(true)
+            console.log(error.message)
         }
         
         if(user !== undefined){
@@ -117,7 +118,7 @@ export const RegisterPage = () => {
                         <span>{errors?.repeatedPassword?.message}</span>
                     </InputContainer>
                     <InputContainer>
-                        <input type="submit" value="SingIn"  />
+                        <input type="submit" value="SingIn" />
                     </InputContainer>
                 </FormBody>
                 

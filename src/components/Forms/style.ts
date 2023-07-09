@@ -83,4 +83,9 @@ export const InputContainer = styled.div`
     }
     
 `;
-export const FormBody = styled.div``;
+export const FormBody = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
