@@ -51,16 +51,16 @@ export const LoginPage = () => {
             dispatch(setCurrentUser(user.user.uid))
             nav("/")
         }
-    },[user])
-
-    const onSubmit = (data:loginData) => {
-        signInWithEmailAndPassword(data.email,data.password)
         if(error){
             setErrorModal(!errorModal)
-        }        
+        }
+    },[user,error])
+
+    const onSubmit = (data:loginData) => {
+        signInWithEmailAndPassword(data.email,data.password)        
     }
 
-     if(loading){
+    if(loading){
         return(
             <Container>
                 <FormBody>
@@ -68,7 +68,7 @@ export const LoginPage = () => {
                 </FormBody>
             </Container>
         )
-     }
+    }
     return(
          
         <Container>

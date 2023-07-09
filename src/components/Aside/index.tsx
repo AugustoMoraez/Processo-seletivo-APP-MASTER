@@ -1,10 +1,18 @@
+//components
 import { Container,Nav,Menu,MenuOption } from "./style";
-import { useNavigate } from "react-router-dom";
+//icon
 import {BiSolidUserCircle} from "react-icons/bi";
+//data
 import {genres} from "../../data/genres";
+//firebase
+import {auth} from "../../services/firebaseConfig";
+//hooks
+import { useNavigate } from "react-router-dom";
+import { useSignOut } from 'react-firebase-hooks/auth';
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import {setCurrentUser} from "../../redux/reducers/userReducer"
+//types
 import { RootState } from "../../redux/store";
 
 type props = {
@@ -26,19 +34,18 @@ export const Aside = ({toggle,toggleFunc}:props) => {
         
        
     }
-
-    const handleAuth = () => {
+    const [signOut] = useSignOut(auth);
+    const handleAuth = async() => {
         if(token !== null){
+            await signOut();
             dispatch(setCurrentUser(null))
             nav("/auth/")
         }else{
             nav("/auth/")
         }
     }
+    
     return(
-
-
-
         <Container toggle={toggle.toString()}>
             <Nav>
                 <Menu>

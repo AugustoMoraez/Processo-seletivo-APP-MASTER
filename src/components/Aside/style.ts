@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 type props = {
-    toggle:string
+    toggle?:string
 }
 
 export const Container = styled.aside<props>`
