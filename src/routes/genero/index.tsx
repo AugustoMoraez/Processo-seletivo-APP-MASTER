@@ -1,19 +1,25 @@
+//components
 import { Container,FilterFor } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
-import { useParams } from "react-router-dom";
 import { GridItem } from "../../components/GirdItem";
 import { Banner } from "../../components/banner";
 import { InputSearch } from "../../components/inputSearch";
-import { game } from "../../types/game";
+//router
+import { useParams } from "react-router-dom";
+//type
+import { ItemGameList } from "../../types/ItemGameList";
+//helpers
+import {getGamesToGenre} from "../../helpers/getGamesToGenre"; 
+
 
 type prop = {
-    games:game[]
+    gamesList:ItemGameList[]
 }
 
-export const GenrePage = ({games}:prop) => {
+export const GenrePage = ({gamesList}:prop) => {
     const params = useParams();
-    const genre = params.genre;
-    const list = games?.filter((game) => game.genre === genre)
+    const genre = params.genre as string;
+    const listGames:ItemGameList[] = getGamesToGenre(gamesList,genre)
 
     return (
         <>
@@ -23,8 +29,8 @@ export const GenrePage = ({games}:prop) => {
                 <InputSearch/>
                 <FilterFor>Just: {genre}</FilterFor>
                 <GridContainer>
-                    {list.map((game) => (
-                        <GridItem game={game} key={game.id} />
+                    {listGames.map((item) => (
+                        <GridItem game={item.game} key={item.game.id} />
                     ))}
                 </GridContainer>
             </Container>

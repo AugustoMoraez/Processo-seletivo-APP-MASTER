@@ -4,7 +4,8 @@ import getTokenUser from '../../helpers/getTokenUser';
 const slice = createSlice({
   name: 'user',
   initialState:{
-    token:getTokenUser("token")
+    token:getTokenUser("token"),
+    ratedGames:[]
   },
   reducers: {
     setCurrentUser: (state,action) => {

@@ -1,7 +1,6 @@
-import { game } from "../types/game";
+import { ItemGameList } from "../types/ItemGameList";
 
-
-export const getItemSearch = (gameName:string,games:game[]) => {
-    const resultGames = games.filter((item)=>item.title.toLocaleLowerCase().indexOf(gameName.toLocaleLowerCase()) > -1)
+export const getItemSearch = (gameName:string,games:ItemGameList[]) => {
+    const resultGames = games.filter((item)=>item.game.title.toLocaleLowerCase().indexOf(gameName.toLocaleLowerCase()) > -1)
     return resultGames;
 }

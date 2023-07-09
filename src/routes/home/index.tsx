@@ -1,23 +1,26 @@
+//components
 import { Container } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
 import { GridItem } from "../../components/GirdItem";
-import { game } from "../../types/game";
 import { Banner } from "../../components/banner";
 import { InputSearch } from "../../components/inputSearch";
+//type
+import { ItemGameList } from "../../types/ItemGameList";
+
 
 type prop = {
-    games:game[]
+    gamesList:ItemGameList[]
 }
 
-export const HomePage = ({games}:prop) => {
+export const HomePage = ({gamesList}:prop) => {
      
     return(
         <Container>
             <Banner/>
             <InputSearch/>
             <GridContainer>
-                {games.map((item)=>(
-                    <GridItem game={item} key={item.id}/>
+                {gamesList.map((item)=>(
+                    <GridItem game={item.game} key={item.game.id}/>
                 ))} 
             </GridContainer>
         </Container>

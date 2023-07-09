@@ -21,10 +21,14 @@ import useCustomQuery from './api/useCustomQuery';
 
 
 const App = () => {
+
   const[toggle,setToggle]=useState<boolean>(false);
+
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
-  const{data,isLoading,Error}=useCustomQuery();
-  const games = data ? data : [];
+
+  const{listGames,isLoading,Error}=useCustomQuery();
+
+  const gamesList = listGames ? listGames : [];
   
   if(isLoading){
     return(
@@ -48,13 +52,14 @@ const App = () => {
       toggleFunc={()=>toggleFunc(toggle)} 
       />
       <Routes>
-        <Route path="/" element={<HomePage games={games} />} />
+        <Route path="/" element={<HomePage gamesList={gamesList} />} />
         <Route path="/auth" element={<AuthPage/>} />
-        <Route path="/game/:game" element={<GamePage games={games}/>} />
-        <Route path="/filter/:genre" element={<GenrePage games={games}/>} />
-        <Route path="/search/:itemSearch" element={<SearchPage games={games}/>} />
+        
+        <Route path="/game/:game" element={<GamePage gamesList={gamesList}/>} />
+        <Route path="/filter/:genre" element={<GenrePage gamesList={gamesList}/>} />
+        <Route path="/search/:itemSearch" element={<SearchPage gamesList={gamesList}/>} />
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </Container>
   );
 };

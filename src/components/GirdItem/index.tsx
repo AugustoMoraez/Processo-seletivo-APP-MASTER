@@ -1,9 +1,19 @@
+//components
 import { CardContainer, CoverImage, CardContent, ActionCard, Avaliation, Stars } from "./style";
-import { game } from "../../types/game";
-import { AiOutlineRight } from "react-icons/ai"
-import { useNavigate } from "react-router-dom";
-import {useState} from "react"
 import { Star } from "../ratingStars";
+//data
+import { game } from "../../types/game";
+//icons
+import { AiOutlineRight } from "react-icons/ai"
+//react
+import {useState} from "react"
+//router
+import { useNavigate } from "react-router-dom";
+//redux
+import { useSelector } from "react-redux";
+//types
+import { RootState } from "../../redux/store";
+
 
 
 type prop = {
@@ -14,17 +24,23 @@ const starsArray: number[] = [... (new Array(4).keys() as any)]
 
 export const GridItem = ({ game }: prop) => {
   
-  const [activeIndex, setActiveIndex] = useState<number>();
+  const [activeIndex, setActiveIndex] = useState<number|undefined>();
+  const{token} = useSelector((state:RootState) => state.user)
   const nav = useNavigate();
-  const redirect = () => {
 
+  const redirect = () => {
     nav(`/game/${game.title}`)
   }
   
 
   const onClickStar = (index: number) => {
-    setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
+    if(token !== null){
+      setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
+    }else{
+      nav(`/auth/`)
+    }
   };
+
   return (
     <CardContainer>
       <CoverImage src={game.thumbnail} alt={game.title} />
