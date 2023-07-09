@@ -6,7 +6,7 @@ import { Load } from "../../Loader";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../../redux/reducers/userReducer";
 //hooks react
-import {useState} from "react"
+import {useState,useEffect} from "react"
 //hooks Router
 import { useNavigate } from "react-router-dom";
 //hooks React hook form and yup
@@ -22,6 +22,9 @@ import {auth} from "../../../services/firebaseConfig";
 export const LoginPage = () => {
 
     const[errorModal,setErrorModal] = useState(false);    
+       
+    const nav = useNavigate();
+    const dispatch = useDispatch();    
 
     const schema = yup.object({
         email:yup.string().required("Required field"),
@@ -42,20 +45,19 @@ export const LoginPage = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const nav = useNavigate();
-    const dispatch = useDispatch();
-    const onSubmit = (data:loginData) => {
-        
-        signInWithEmailAndPassword(data.email,data.password)
 
-      
+    useEffect(()=>{
+        if(user){
+            dispatch(setCurrentUser(user.user.uid))
+            nav("/")
+        }
+    },[user])
+
+    const onSubmit = (data:loginData) => {
+        signInWithEmailAndPassword(data.email,data.password)
         if(error){
             setErrorModal(!errorModal)
-        }
-        if(user !== undefined){
-            dispatch(setCurrentUser(user.user.uid))
-            nav("/");
-        }
+        }        
     }
 
      if(loading){
@@ -71,7 +73,7 @@ export const LoginPage = () => {
          
         <Container>
             <ModalMensage 
-            msg="email ou senha invalida" 
+            msg="email or password invalid" 
             toggle={errorModal} 
             func={()=>setErrorModal(!errorModal)}  />
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -102,7 +104,7 @@ export const LoginPage = () => {
                         <span>{errors?.password?.message}</span>
                     </InputContainer>
                     <InputContainer>
-                        <input type="submit" value="Log In"  />
+                        <input type="submit" value="Log In" />
                     </InputContainer>
                 </FormBody>
             </FormContainer>
