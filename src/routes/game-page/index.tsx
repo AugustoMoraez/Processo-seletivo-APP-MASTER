@@ -1,21 +1,32 @@
-import { Container,SubContainer,Thumbnail,Title,Description,Details,DownloadLink,InfoContainer, FlexContainer, FlexItem } from "./style";
+import { Container,SubContainer,Thumbnail,Title,Description,Details,DownloadLink,InfoContainer, FlexContainer, FlexItem, Stars } from "./style";
 import { InputSearch } from "../../components/inputSearch";
 import { game } from "../../types/game";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getGameToShow } from "../../helpers/getGameToShow";
+import {useState} from "react";
 import { getGamesRecomendeds } from "../../helpers/getGamesRecomendeds";
+import { Star } from "../../components/ratingStars";
 
 
 type prop = {
-    games:game[]
+  games:game[]
 }
+const starsArray: number[] = [... (new Array(4).keys() as any)]
+
 export const GamePage = ({games}:prop) => {
+
+  const [activeIndex, setActiveIndex] = useState<number>();
+
   const nav = useNavigate();
   const params = useParams();
   const game_name = params.game as string;
   const game = getGameToShow(games,game_name);
   const ListRecomended = getGamesRecomendeds(game,games);
+
+  const onClickStar = (index: number) => {
+    setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
+  };
 
   return(
     <Container>
@@ -39,6 +50,15 @@ export const GamePage = ({games}:prop) => {
           <Details>
             <strong>Developer:</strong> {game.developer}
           </Details>
+          <Stars>
+            {starsArray.map((index) => (
+                  <Star
+                    onClick={() => onClickStar(index)}
+                    key={`star_${index}`}
+                    isActive={index <= activeIndex!}
+                  />
+                ))}    
+          </Stars>
           <DownloadLink href={game.freetogame_profile_url} target="_blank" rel="noopener noreferrer">
             Game
           </DownloadLink>

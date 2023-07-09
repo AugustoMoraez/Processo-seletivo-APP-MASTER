@@ -54,3 +54,18 @@ export const CardContent = styled.div`
     margin-top: 2px;
   }
 `;
+export const ActionCard = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+`;
+export const Avaliation = styled.div`
+
+
+`;
+export const Stars = styled.div`
+  display: flex;
+`;
