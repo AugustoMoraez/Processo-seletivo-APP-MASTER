@@ -35,15 +35,16 @@ export const GridItem = ({ item }: prop) => {
   }
   const SelectStart = (index: number) => {
     setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
-    if(token !== null){
+    console.log(token)
+    if(token === null){
+      nav(`/auth/`)
+    }else{
       dispatch(setGameList({
         game:item.game,
         stars:(index === activeIndex ? undefined : index ),
         favorite:item.favorite,
         inFavoriteList:item.inFavoriteList
       }))
-    }else{
-      nav(`/auth/`)
     }
   };
 

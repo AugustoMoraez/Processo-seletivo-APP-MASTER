@@ -1,24 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getLocalStorage from '../../helpers/getLocalStorage';
 import { ItemGameList } from '../../types/ItemGameList';
-
+import getUserListGames from '../../helpers/getUserListGames';
+import getTokenUser from '../../helpers/getTokenUser';
 
 
 
 const slice = createSlice({
   name: 'user',
   initialState: {
-    token: getLocalStorage("token"),
-    userGamesList: getLocalStorage("userGameList")
+    token: getTokenUser()  ,
+    userGamesList: getUserListGames()
   },
   reducers: {
     setCurrentUser: (state, action) => {
-      localStorage.setItem("token", JSON.stringify(action.payload));
-      return state
+      if(action.payload === null){
+        localStorage.removeItem("userGameList");
+        localStorage.setItem("token", JSON.stringify(action.payload));
+        
+      }else{
+        localStorage.setItem("token", JSON.stringify(action.payload));
+      }
+      return {...state,  token:action.payload}
     },
     setGameList: (state, action) => {
 
-      let list: ItemGameList[] = getLocalStorage("userGameList")
+      let list: ItemGameList[] = getUserListGames()
       let itemPayload: ItemGameList = action.payload
       if(itemPayload.favorite){
         console.log("item com coração")

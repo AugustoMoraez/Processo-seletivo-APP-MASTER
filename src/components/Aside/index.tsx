@@ -39,10 +39,8 @@ export const Aside = ({toggle,toggleFunc}:props) => {
         if(token !== null){
             await signOut();
             dispatch(setCurrentUser(null))
-            nav("/auth/")
-        }else{
-            nav("/auth/")
         }
+        nav("/auth/")
     }
     
     return(
@@ -51,15 +49,16 @@ export const Aside = ({toggle,toggleFunc}:props) => {
                 <Menu>
                     <MenuOption onClick={()=>{handleAuth(),toggleFunc()}}>
                         {
-                            token === typeof(String) 
+                            token === null 
                             ?
-                            <span>
-                                <BiSolidUserCircle/>Logout
-                            </span>
-                            :
                             <span>
                                 <BiSolidUserCircle/>LogIn
                             </span>
+                            :
+                            <span>
+                                <BiSolidUserCircle/>Logout
+                            </span>
+                            
                         }
                     </MenuOption>
                     <h3>Filters:</h3>
