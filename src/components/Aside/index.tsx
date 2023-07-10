@@ -1,5 +1,5 @@
 //components
-import { Container,Nav,Menu,MenuOption } from "./style";
+import { Container,Nav,Menu,MenuOption,BarElement } from "./style";
 //icon
 import {BiSolidUserCircle} from "react-icons/bi";
 //data
@@ -57,8 +57,7 @@ export const Aside = ({toggle,toggleFunc}:props) => {
                             :
                             <span>
                                 <BiSolidUserCircle/>Logout
-                            </span>
-                            
+                            </span>  
                         }
                     </MenuOption>
                     <h3>Filters:</h3>
@@ -67,8 +66,9 @@ export const Aside = ({toggle,toggleFunc}:props) => {
                     </MenuOption>
                     {genres.map((item,index)=>(
                         <MenuOption onClick={redirect} key={index}>
+                            <BarElement />
                             <p>
-                                {item}
+                                {item.toLocaleUpperCase()}
                             </p>
                         </MenuOption>
                     ))}

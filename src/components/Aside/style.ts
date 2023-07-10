@@ -17,9 +17,13 @@ export const Container = styled.aside<props>`
     overflow: scroll;
     z-index: 99;
     //style
-    background-color: #4BA6FB;
+    background-color: #FFF;
+    box-shadow: 0px 5px 10px #333;
     transition: 0.5s;
     //sub-componentes
+    &::-webkit-scrollbar{
+        display: none;
+    }
     nav{
         display:  ${(props)=> props.toggle === "true" ? "block" : "none" };
     }
@@ -33,6 +37,7 @@ export const Container = styled.aside<props>`
 export const Nav = styled.nav`
     //dimensao
     width: 100%;
+    overflow: hidden;
     
 `;
 export const Menu = styled.ul`
@@ -41,18 +46,29 @@ export const Menu = styled.ul`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color:#333;
+    //sub-components
+    h3{
+        cursor: default;
+    }
 `;
 export const MenuOption = styled.li`
     
     //dimensao e posição
     width: 100%;
     text-align: center;
-    padding: 10px;
+    
     //style
     transition: 0.5s;
-    font-weight: 100;
+    font-weight: 600;
+    
+    
+    color:#333;
 
     //sub-components
+    p{
+        padding: 10px;
+    }
     span{
         font-size: 30px;
         //display
@@ -66,7 +82,15 @@ export const MenuOption = styled.li`
     //hover
     &:hover{
         cursor: pointer;
-        background-color:#4BBCFB;
+        color:#4BBCFB;
+        background-color:rgba(0,0,200,0.1);
     }
+    
+`;
+export const BarElement = styled.div`
+    width: 90%;
+    height: 1px;
+    margin:auto;
+    background-color: #eee;
     
 `;
