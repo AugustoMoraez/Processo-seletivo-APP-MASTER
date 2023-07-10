@@ -14,7 +14,7 @@ const slice = createSlice({
   reducers: {
     setCurrentUser: (state, action) => {
       localStorage.setItem("token", JSON.stringify(action.payload));
-      
+      return state
     },
     setGameList: (state, action) => {
 
@@ -37,9 +37,7 @@ const slice = createSlice({
           localStorage.setItem("userGameList", JSON.stringify(list));
         }
       }
-
-      
-    
+      return state
     }
   }
 })
