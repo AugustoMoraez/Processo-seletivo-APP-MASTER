@@ -68,7 +68,7 @@ export const Aside = ({toggle,toggleFunc}:props) => {
                         <MenuOption onClick={redirect} key={index}>
                             <BarElement />
                             <p>
-                                {item.toLocaleUpperCase()}
+                                {item}
                             </p>
                         </MenuOption>
                     ))}

@@ -62,7 +62,11 @@ export const ActionCard = styled.div`
 
 `;
 export const Avaliation = styled.div`
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin-left: auto;
 
 `;
 export const Stars = styled.div`
