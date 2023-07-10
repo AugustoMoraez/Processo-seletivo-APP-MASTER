@@ -9,7 +9,7 @@ type prop = {
 
 export const LikeButton = ({isLiked,onClick}:prop) => (
     <Container
-    isLiked={isLiked ? "true" : "false"}
+    liked={isLiked ? "true" : "false"}
     onClick={onClick}>
         <motion.button
             whileTap={{ scale: 2.0 }}
