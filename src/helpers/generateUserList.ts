@@ -1,7 +1,6 @@
 import { ItemGameList } from "../types/ItemGameList";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { useState } from "react";
 
 
 const generateUserList = (list:ItemGameList[]):ItemGameList[] => {
