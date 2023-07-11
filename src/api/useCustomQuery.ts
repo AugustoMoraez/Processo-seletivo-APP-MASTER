@@ -19,7 +19,7 @@ const useCustomQuery = ():dataFetch => {
                 id:index.toString(),
                 game:item,
                 favorite:false,
-                stars:undefined,
+                stars:"undefined",
             })
         })
 

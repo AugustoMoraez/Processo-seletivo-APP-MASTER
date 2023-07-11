@@ -16,7 +16,7 @@ import { Routes,Route } from 'react-router-dom';
 import  {useSelector} from "react-redux";
 import  {useDispatch} from "react-redux";
 import { RootState } from './redux/store';
-import {setInFavoriteList} from "./redux/reducers/userReducer"
+import {setUserGamesList} from "./redux/reducers/userReducer"
 //hooks
 import { useState,useEffect } from 'react';
 import useCustomQuery from './api/useCustomQuery';
@@ -48,7 +48,7 @@ const App = () => {
         })
         setListUserGames(list)
         localStorage.setItem("ListGames",JSON.stringify(list))
-        dispatch(setInFavoriteList(JSON.parse(localStorage.getItem("ListGames") as string)))
+        dispatch(setUserGamesList(JSON.parse(localStorage.getItem("ListGames") as string)))
       },
       (error)=>alert("firestore error request:"+error))
       return () => {unSub()}

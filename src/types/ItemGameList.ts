@@ -5,6 +5,6 @@ export type ItemGameList = {
     id:string,
     game:game,
     favorite:boolean,
-    stars:number|undefined,
+    stars:string,
     
 }

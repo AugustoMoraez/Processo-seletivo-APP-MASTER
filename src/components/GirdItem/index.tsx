@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 //redux
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {setInFavoriteList} from "../../redux/reducers/userReducer"
+import {setInUserGamesList} from "../../redux/reducers/userReducer"
 //types
 import { RootState } from "../../redux/store";
 import { ItemGameList } from "../../types/ItemGameList";
@@ -26,7 +26,7 @@ const starsArray: number[] = [... (new Array(4).keys() as any)]
 
 export const GridItem = ({ item }: prop) => {
   
-  const [activeIndex, setActiveIndex] = useState<number|undefined>(item.stars);
+  const [activeIndex, setActiveIndex] = useState<number|undefined>(item.stars === "undefined" ? undefined : parseInt(item.stars));
   const [isLiked, setisLiked] = useState<boolean>(item.favorite);
   const{token} = useSelector((state:RootState) => state.user)
   const nav = useNavigate();
@@ -41,16 +41,27 @@ export const GridItem = ({ item }: prop) => {
     if(token === null){
       nav(`/auth/`)
     }else{
-      
+      dispatch(setInUserGamesList({
+        id:item.id,
+        game:item.game,
+        favorite:item.favorite,
+        stars:(activeIndex === undefined ? "undefined" : activeIndex.toString())
+      }))
     }
   };
 
-  const handleLikeButton = () => {
+  const handleLikeButton = async() => {
     if(token === null){
       nav(`/auth/`)
     }else{
-      setisLiked(!isLiked)
-      console.log(item.game)
+      await setisLiked(!isLiked)
+      
+      dispatch(setInUserGamesList({
+        id:item.id,
+        game:item.game,
+        favorite:isLiked ? true : false,
+        stars:item.stars
+      }))
     }
   }
 
