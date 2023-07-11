@@ -22,14 +22,17 @@ type prop = {
 
 export const HomePage = ({gamesList }:prop) => {
      
-    const{token}=useSelector((state:RootState)=>state.user);
-    const [list, setList] = useState<ItemGameList[]>(generateUserList(gamesList) );
-
-    useEffect(() => {
-       if(token === null){
-        setList(gamesList)
-       }
-    }, [token]);
+    const{token} = useSelector((state:RootState)=>state.user)
+    const [list, setList] = useState<ItemGameList[]>(generateUserList(gamesList));
+    useEffect(()=>{
+        if(token){
+            const editList = () => {
+                setList(gamesList)
+            }
+            return ()=>{editList()}
+        }
+    },[token])
+    
      
     return(
         <Container>

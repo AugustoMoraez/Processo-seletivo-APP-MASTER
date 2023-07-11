@@ -50,7 +50,7 @@ export const GridItem = ({ item }: prop) => {
       nav(`/auth/`)
     }else{
       setisLiked(!isLiked)
-      
+      console.log(item.game)
     }
   }
 

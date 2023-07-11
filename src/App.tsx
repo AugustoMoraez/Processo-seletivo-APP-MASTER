@@ -21,8 +21,8 @@ import {setInFavoriteList} from "./redux/reducers/userReducer"
 import { useState,useEffect } from 'react';
 import useCustomQuery from './api/useCustomQuery';
 //firestore
-import { useCollection } from 'react-firebase-hooks/firestore';
-import { store, config } from "./services/firebaseConfig";
+import { onSnapshot } from 'firebase/firestore';
+import { store } from "./services/firebaseConfig";
 //types
 import { ItemGameList } from './types/ItemGameList';
 
@@ -31,7 +31,6 @@ import { ItemGameList } from './types/ItemGameList';
 const App = () => {
   
 
-  const [value] = useCollection(store, config);
   const{listGames,isLoading,Error}=useCustomQuery();
   const{token}=useSelector((state:RootState)=>state.user)
   let gamesList = listGames ? listGames.sort((a,b)=>a.game.title > b.game.title ? 1 : -1) : [];
@@ -41,15 +40,20 @@ const App = () => {
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
 
   useEffect(()=>{
-    if(token && value !== undefined){
-      const func = () => {
-        setListUserGames(value.docs.map((doc)=>({...doc.data(),id:doc.id})) as ItemGameList[])
-        localStorage.setItem("listGames",JSON.stringify(listUserGames));
-        dispatch(setInFavoriteList(JSON.parse(localStorage.getItem("listGames") as string)))
-      }
-      func()
+    if(token){
+      const unSub = onSnapshot(store,(data)=>{
+        let list:any[] = [];
+        data.docs.forEach((doc) => {
+          list.push({id:doc.id, ...doc.data()})
+        })
+        setListUserGames(list)
+        localStorage.setItem("ListGames",JSON.stringify(list))
+        dispatch(setInFavoriteList(JSON.parse(localStorage.getItem("ListGames") as string)))
+      },
+      (error)=>alert("firestore error request:"+error))
+      return () => {unSub()}
     }
-  },[token,value])
+  },[token])
 
   if(isLoading){
     return(
