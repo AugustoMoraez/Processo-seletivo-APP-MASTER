@@ -18,5 +18,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const store = collection(getFirestore(app), 'favorite-game')
+export const db = getFirestore(app)
+export const store = collection(db, 'favorite-game')
 export const auth = getAuth(app);

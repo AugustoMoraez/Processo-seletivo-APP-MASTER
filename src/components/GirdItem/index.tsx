@@ -45,7 +45,14 @@ export const GridItem = ({ item }: prop) => {
     if(token === null){
       nav(`/auth/`)
     }else{
-      dispatch(setInUserGamesList({...item,stars:activeIndex === index ? "undefined" : index.toString()}))
+      const itemPayload = {
+        id:item.id,
+        game:item.game,
+        favorite:isLiked,
+        stars:activeIndex === index ? "undefined" : index.toString()
+        
+      }
+      dispatch(setInUserGamesList(itemPayload))
       setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
     }
   };
@@ -55,9 +62,17 @@ export const GridItem = ({ item }: prop) => {
       nav(`/auth/`)
     }else{
       
-      const newLike = isLiked;
-      dispatch(setInUserGamesList({...item,favorite:!newLike}))
+      
+      const itemPayload = {
+        id:item.id,
+        game:item.game,
+        favorite:!isLiked,
+        stars: activeIndex === undefined ? "undefined" : activeIndex.toString()
+
+      }
+      dispatch(setInUserGamesList(itemPayload))
       setisLiked(!isLiked)
+      console.log(item)
       
     }
   }

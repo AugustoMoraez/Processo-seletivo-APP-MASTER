@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import getTokenUser from '../../helpers/getTokenUser';
 import { ItemGameList } from '../../types/ItemGameList';
-import { store } from '../../services/firebaseConfig';
-import { addDoc } from 'firebase/firestore';
+import { db } from '../../services/firebaseConfig';
+import { doc,deleteDoc,setDoc } from 'firebase/firestore';
 
 
 
@@ -31,16 +31,26 @@ const slice = createSlice({
       const userGamesList:ItemGameList[] = JSON.parse(localStorage.getItem("ListGames") as string)
       
       if(userGamesList.some(item => item.game.id === itemPayload.game.id)){
-        console.log("na lista")
+        if(itemPayload.favorite === false  && itemPayload.stars === "undefined"){
+          const remove = async () => {
+            await deleteDoc(doc(db, "favorite-game", itemPayload.id))
+            console.log("removido com sucesso")
+          } 
+          remove();
+        }else{
+          const edit = async () => {
+            await setDoc(doc(db, "favorite-game", itemPayload.id),itemPayload)
+            console.log("editado com sucesso")
+          } 
+          edit();
+        }
       }else{
         const add = async () => {
-          await addDoc(store,itemPayload)
+          await setDoc(doc(db, "favorite-game", itemPayload.id),itemPayload)
           console.log("adicionado com sucesso")
         } 
         add();
       }
-
-
     }
     
   }
