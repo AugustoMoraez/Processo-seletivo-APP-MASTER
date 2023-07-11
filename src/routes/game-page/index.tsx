@@ -8,38 +8,25 @@ import { useNavigate } from "react-router-dom";
 //helpers
 import { getGameToShow } from "../../helpers/getGameToShow";
 import { getGamesRecomendeds } from "../../helpers/getGamesRecomendeds";
-//react
-import {useState} from "react";
-//redux
-import { useSelector } from "react-redux";
-//types
-import { RootState } from "../../redux/store";
+import generateUserList from "../../helpers/generateUserList";
+
 import { ItemGameList } from "../../types/ItemGameList";
 
 type prop = {
   gamesList:ItemGameList[]
 }
-const starsArray: number[] = [... (new Array(4).keys() as any)]
 
 export const GamePage = ({gamesList}:prop) => {
-
-  const [activeIndex, setActiveIndex] = useState<number>();
-  const{token} = useSelector((state:RootState) => state.user)
 
   const nav = useNavigate();
   const params = useParams();
   const game_name = params.game as string;
   const ItemGameList = getGameToShow(gamesList,game_name);
   const ListRecomended = getGamesRecomendeds(ItemGameList,gamesList);
+  
 
-  const onClickStar = (index: number) => {
-    if(token !== null){
-      setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
-    }else{
-      nav(`/auth/`)
-    }
-  };
 
+  
   return(
     <Container>
       <InputSearch/>
@@ -62,15 +49,7 @@ export const GamePage = ({gamesList}:prop) => {
           <Details>
             <strong>Developer:</strong> {ItemGameList.game.developer}
           </Details>
-          <Stars>
-            {starsArray.map((index) => (
-                  <Star
-                    onClick={() => onClickStar(index)}
-                    key={`star_${index}`}
-                    isActive={index <= activeIndex!}
-                  />
-                ))}    
-          </Stars>
+          
           <DownloadLink href={ItemGameList.game.freetogame_profile_url} target="_blank" rel="noopener noreferrer">
             Game
           </DownloadLink>

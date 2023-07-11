@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { ItemGameList } from "../../types/ItemGameList";
 //helpers
 import {getGamesToGenre} from "../../helpers/getGamesToGenre"; 
+import generateUserList from "../../helpers/generateUserList";
 
 
 type prop = {
@@ -19,7 +20,7 @@ type prop = {
 export const GenrePage = ({gamesList}:prop) => {
     const params = useParams();
     const genre = params.genre as string;
-    const listGames:ItemGameList[] = getGamesToGenre(gamesList,genre)
+    const listGames:ItemGameList[] = getGamesToGenre(generateUserList(gamesList),genre)
 
     return (
         <>

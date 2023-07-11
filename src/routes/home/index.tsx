@@ -22,18 +22,9 @@ type prop = {
 
 export const HomePage = ({gamesList }:prop) => {
      
-    const{token} = useSelector((state:RootState)=>state.user)
-    const [list, setList] = useState<ItemGameList[]>(generateUserList(gamesList));
-    useEffect(()=>{
-        if(token){
-            const editList = () => {
-                setList(gamesList)
-            }
-            return ()=>{editList()}
-        }
-    },[token])
     
-     
+    const [list, setList] = useState<ItemGameList[]>(generateUserList(gamesList));
+    
     return(
         <Container>
             <Banner/>

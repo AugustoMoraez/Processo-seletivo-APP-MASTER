@@ -28,6 +28,11 @@ export const GridItem = ({ item }: prop) => {
   
   const [activeIndex, setActiveIndex] = useState<number|undefined>(item.stars === "undefined" ? undefined : parseInt(item.stars));
   const [isLiked, setisLiked] = useState<boolean>(item.favorite);
+  const itemPayload = {
+    ...item,
+    favorite:isLiked,
+    stars:activeIndex ? activeIndex.toString() : "undefined"
+  }
   const{token} = useSelector((state:RootState) => state.user)
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -35,33 +40,25 @@ export const GridItem = ({ item }: prop) => {
   const redirect = () => {
     nav(`/game/${item.game.title}`)
   }
-
-  const SelectStart = (index: number) => {
-    setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
+  
+  const SelectStart =  (index: number) => {
     if(token === null){
       nav(`/auth/`)
     }else{
-      dispatch(setInUserGamesList({
-        id:item.id,
-        game:item.game,
-        favorite:item.favorite,
-        stars:(activeIndex === undefined ? "undefined" : activeIndex.toString())
-      }))
+      dispatch(setInUserGamesList({...item,stars:activeIndex === index ? "undefined" : index.toString()}))
+      setActiveIndex((oldState:number|undefined) => (oldState === index ? undefined : index));
     }
   };
 
-  const handleLikeButton = async() => {
+  const handleLikeButton = () => {
     if(token === null){
       nav(`/auth/`)
     }else{
-      await setisLiked(!isLiked)
       
-      dispatch(setInUserGamesList({
-        id:item.id,
-        game:item.game,
-        favorite:isLiked ? true : false,
-        stars:item.stars
-      }))
+      const newLike = isLiked;
+      dispatch(setInUserGamesList({...item,favorite:!newLike}))
+      setisLiked(!isLiked)
+      
     }
   }
 
@@ -75,9 +72,7 @@ export const GridItem = ({ item }: prop) => {
         <ActionCard>
           <button onClick={redirect}>More info  <AiOutlineRight /> </button>
           <Avaliation>
-
             <LikeButton isLiked={isLiked} onClick={handleLikeButton}/>
-
             <Stars>
               {starsArray.map((index) => (
                 <Star

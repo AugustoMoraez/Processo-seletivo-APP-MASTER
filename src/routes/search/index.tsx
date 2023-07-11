@@ -7,6 +7,7 @@ import { GridItem } from "../../components/GirdItem";
 import { useParams } from "react-router-dom";
 //helpers
 import { getItemSearch } from "../../helpers/getItemSearch";
+import generateUserList from "../../helpers/generateUserList";
 //type
 import { ItemGameList } from "../../types/ItemGameList";
 
@@ -17,7 +18,8 @@ type prop ={
 export const SearchPage = ({gamesList}:prop) => {
     const params = useParams();
     const gameName = params.itemSearch as string;
-    const resultsOfSearch = getItemSearch(gameName,gamesList);
+    const resultsOfSearch = getItemSearch(gameName,generateUserList(gamesList));
+    
 
     return(
         <Container>

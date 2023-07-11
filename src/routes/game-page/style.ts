@@ -102,9 +102,7 @@ export const Platforms = styled.p`
    
 `;
 
-export const Stars = styled.div`
-  display: flex;
-`;
+ 
 
 export const DownloadLink = styled.a`
   //dimensao
