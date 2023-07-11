@@ -12,7 +12,7 @@ const slice = createSlice({
   reducers: {
     setCurrentUser: (state, action) => {
       if (action.payload === null) {
-        localStorage.removeItem("userGameList");
+        localStorage.removeItem("listGames");
         localStorage.setItem("token", JSON.stringify(action.payload));
 
       } else {

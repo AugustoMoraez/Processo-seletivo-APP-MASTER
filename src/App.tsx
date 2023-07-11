@@ -34,7 +34,7 @@ const App = () => {
   const [value] = useCollection(store, config);
   const{listGames,isLoading,Error}=useCustomQuery();
   const{token}=useSelector((state:RootState)=>state.user)
-  let gamesList = listGames ? listGames : [];
+  let gamesList = listGames ? listGames.sort((a,b)=>a.game.title > b.game.title ? 1 : -1) : [];
   const[toggle,setToggle]=useState<boolean>(false);
   const[listUserGames,setListUserGames] = useState<ItemGameList[]>([])
   const dispatch = useDispatch();

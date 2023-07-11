@@ -14,7 +14,7 @@ const generateUserList = (list:ItemGameList[]):ItemGameList[] => {
             newList.push(item)
         })
        
-        
+        newList.sort((a,b)=>a.game.title > b.game.title ? 1 : -1)
         
         return newList
            
