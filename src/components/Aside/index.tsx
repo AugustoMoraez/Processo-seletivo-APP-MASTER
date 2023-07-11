@@ -23,31 +23,37 @@ type props = {
 export const Aside = ({toggle,toggleFunc}:props) => {
     
     const{token} = useSelector((state:RootState) => state.user )
+    const [signOut] = useSignOut(auth);
     const dispatch = useDispatch();
     const nav = useNavigate();
    
     const redirect = (e:React.MouseEvent<HTMLLIElement>) => {
-       
         toggleFunc();
         const element = e.target as HTMLLIElement;
-        nav(`filter/${element.textContent}`)
-        
-       
+        nav(`filter/${element.textContent}`)       
     }
-    const [signOut] = useSignOut(auth);
     const handleAuth = async() => {
         if(token !== null){
             await signOut();
             dispatch(setCurrentUser(null))
         }
         nav("/auth/")
+        toggleFunc()
+    }
+    const redirectFavoritePage = () => {
+        if(token !== null){
+            nav("/favorites")
+        }else{
+            nav("/auth/")
+        }
+        toggleFunc()
     }
     
     return(
         <Container toggle={toggle.toString()}>
             <Nav>
                 <Menu>
-                    <MenuOption onClick={()=>{handleAuth(),toggleFunc()}}>
+                    <MenuOption onClick={()=>{handleAuth()}}>
                         {
                             token === null 
                             ?
@@ -63,6 +69,9 @@ export const Aside = ({toggle,toggleFunc}:props) => {
                     <h3>Filters:</h3>
                     <MenuOption onClick={()=>{nav("/"),toggleFunc()}}>
                         <p>All</p>
+                    </MenuOption>
+                    <MenuOption onClick={redirectFavoritePage}>
+                        <p>Favorites</p>
                     </MenuOption>
                     {genres.map((item,index)=>(
                         <MenuOption onClick={redirect} key={index}>

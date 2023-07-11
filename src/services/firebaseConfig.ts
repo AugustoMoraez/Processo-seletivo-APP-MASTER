@@ -1,6 +1,12 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection } from "firebase/firestore";
 import {getAuth} from "firebase/auth"
  
+export const config = {
+  snapshotListenOptions: { includeMetadataChanges: true }
+};
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCDiupwOSkHYkph0AQV_N9UVf6V2MKkgJ0",
   authDomain: "gamedevauth.firebaseapp.com",
@@ -12,4 +18,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const store = collection(getFirestore(app), 'favorite-game')
 export const auth = getAuth(app);

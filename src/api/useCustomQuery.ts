@@ -5,24 +5,26 @@ import { AxiosError } from "axios";
 import { ItemGameList } from "../types/ItemGameList";
 
 
+
 const useCustomQuery = ():dataFetch => {
     const fetch = () => {
         const{data,isLoading,error} =  useQuery("api-data",()=>fetchData(),
         {retry:1});
         const Error = error as AxiosError
 
-        const listGames:ItemGameList[] = [];
+        let listGames:ItemGameList[] = [];
 
-        data?.map(item=>{
+        data?.map((item,index)=>{
             listGames.push({
+                id:index.toString(),
                 game:item,
                 favorite:false,
                 stars:undefined,
-                inFavoriteList:false
             })
         })
 
-        return {listGames,isLoading,Error};
+        return{listGames,isLoading,Error}
+
     }
     return fetch();
 }

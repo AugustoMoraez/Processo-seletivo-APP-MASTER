@@ -1,33 +1,37 @@
 //components
-import {Container} from "./style";
+import { Container } from "./style";
 import { InputSearch } from "../../components/inputSearch";
 import { GridContainer } from "../../components/GridContainer/style";
+import { GridItem } from "../../components/GirdItem";
+import { Load } from "../../components/Loader";
 //firestore
-import { getFirestore, collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { app } from "../../services/firebaseConfig";
+import { store, config } from "../../services/firebaseConfig";
 //react
-import { useEffect,useState } from "react";
+import {useState,useEffect} from "react"
+import { ItemGameList } from "../../types/ItemGameList";
 
-export const FavoritesPage = ( ) => {
-    const [value, loading, error] = useCollection(
-    collection(getFirestore(app), 'favorite-game'),
-    {
-        snapshotListenOptions: { includeMetadataChanges: false },
-    }
-    );
 
-    const[data,setData]=useState([])
+type prop = {
+    gamesList:ItemGameList[]
+}
 
-    useEffect(()=>{
-          
-    },[value])
 
-    return(
+
+export const FavoritesPage = ({gamesList}:prop) => {
+     
+    
+    return (
         <Container>
-            <InputSearch/>
+            <InputSearch />
             <GridContainer>
-                <button onClick={()=>console.log(value)}>c</button>
+                {gamesList.length === 0 ?
+                <p>there are no favorite games</p>
+                :
+                gamesList.map((item)=>(
+                    <GridItem key={item.id} item={item}/>
+                ))
+                }
             </GridContainer>
         </Container>
 
