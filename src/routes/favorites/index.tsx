@@ -32,7 +32,13 @@ export const FavoritesPage = ({gamesList}:prop) => {
     //handle select
 
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-       
+        if(e.target.value === "All"){
+            setList(gamesList);
+        }else{
+            const list = getGamesToGenre(gamesList,e.target.value);
+            setList(list);
+        }
+        setSelectValue(e.target.value);
     };
 
 
