@@ -1,6 +1,5 @@
 //components
-import { Star } from "../../components/ratingStars";
-import { Container,SubContainer,Thumbnail,Title,Description,Details,DownloadLink,InfoContainer, FlexContainer, FlexItem, Stars } from "./style";
+import { Container,SubContainer,Thumbnail,Title,Description,Details,DownloadLink,InfoContainer, FlexContainer, FlexItem } from "./style";
 import { InputSearch } from "../../components/inputSearch";
 //router
 import { useParams } from "react-router-dom";
@@ -8,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 //helpers
 import { getGameToShow } from "../../helpers/getGameToShow";
 import { getGamesRecomendeds } from "../../helpers/getGamesRecomendeds";
-import generateUserList from "../../helpers/generateUserList";
 
 import { ItemGameList } from "../../types/ItemGameList";
 

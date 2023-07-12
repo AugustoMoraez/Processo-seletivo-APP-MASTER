@@ -9,9 +9,6 @@ import { ItemGameList } from "../../types/ItemGameList";
 //helpers
 import generateUserList from "../../helpers/generateUserList";
 //redux
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { useEffect,useState } from "react";
 
 
 
@@ -23,7 +20,7 @@ type prop = {
 export const HomePage = ({gamesList }:prop) => {
      
     
-    const [list, setList] = useState<ItemGameList[]>(generateUserList(gamesList));
+    const list= generateUserList(gamesList);
     
     return(
         <Container>
