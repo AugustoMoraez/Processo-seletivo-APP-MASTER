@@ -34,23 +34,21 @@ const slice = createSlice({
         if(itemPayload.favorite === false  && itemPayload.stars === "undefined"){
           const remove = async () => {
             await deleteDoc(doc(db, "favorite-game", itemPayload.id))
-            console.log("removido com sucesso")
           } 
           remove();
         }else{
           const edit = async () => {
             await setDoc(doc(db, "favorite-game", itemPayload.id),itemPayload)
-            console.log("editado com sucesso")
           } 
           edit();
         }
       }else{
         const add = async () => {
           await setDoc(doc(db, "favorite-game", itemPayload.id),itemPayload)
-          console.log("adicionado com sucesso")
         } 
         add();
       }
+      return state;
     }
     
   }

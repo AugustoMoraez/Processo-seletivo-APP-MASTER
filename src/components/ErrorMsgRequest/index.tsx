@@ -21,12 +21,14 @@ export const ErroMessage = ({Error}:prop) => {
       }
     }
   },[])
-  
+  const reload = () => {
+    window.location.reload()
+  }
   
   return(
       <Container>
         <p>{msgError}</p>
-        <a href="/">Try again</a>
+        <a onClick={reload}>Try again</a>
       </Container>
   )
 }

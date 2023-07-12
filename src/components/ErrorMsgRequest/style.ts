@@ -15,6 +15,7 @@ export const Container = styled.div`
         margin: auto;
         border-radius: 10px;
         &:hover{
+            cursor: pointer;
             opacity: 0.7;
         }
     }

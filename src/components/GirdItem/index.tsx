@@ -71,9 +71,7 @@ export const GridItem = ({ item }: prop) => {
 
       }
       dispatch(setInUserGamesList(itemPayload))
-      setisLiked(!isLiked)
-      console.log(item)
-      
+      setisLiked(!isLiked)      
     }
   }
 
