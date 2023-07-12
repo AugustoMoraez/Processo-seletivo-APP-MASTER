@@ -25,34 +25,36 @@ export const FavoritesPage = ({gamesList}:prop) => {
         setList(gamesList)
     },gamesList)
 
-    const setFilterForName = (gameName:string) => {
-        setList(getItemSearch(gameName,gamesList))
-    }
-   
+    
     //handle select
 
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectValue(e.target.value);
         if(e.target.value === "All"){
             setList(gamesList);
         }else{
             const list = getGamesToGenre(gamesList,e.target.value);
             setList(list);
         }
-        setSelectValue(e.target.value);
     };
 
 
     ////////////////////
     //handle Input
+    
 
     const handleInputText = (e:React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
+        const currentGenre = selectValue;
+        const list = currentGenre === "All" ? gamesList : getGamesToGenre(gamesList,currentGenre);
+        setList(getItemSearch(e.target.value,list))
+        
     }
 
 
     const PressEnter = (e:KeyboardEvent) => {
         if(e.key === "Enter"){
-            setFilterForName(inputText)
+            setList(getItemSearch(inputText,list))
         }
     }
     ///////////////////////////////////////////////////
@@ -67,7 +69,7 @@ export const FavoritesPage = ({gamesList}:prop) => {
                 </GenreOptions>
                 <InputContainer>
                     <Input onKeyDown={PressEnter} onChange={handleInputText} value={inputText} placeholder="Ex: Overwatch 2"/>
-                    <InputButton onClick={()=>setFilterForName(inputText)}><BsSearch/></InputButton>
+                    <InputButton onClick={()=> setList(getItemSearch(inputText,list))}><BsSearch/></InputButton>
                 </InputContainer>
             </SearchOptions>
             <GridContainer>
