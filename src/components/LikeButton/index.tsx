@@ -12,6 +12,7 @@ export const LikeButton = ({isLiked,onClick}:prop) => (
     liked={isLiked ? "true" : "false"}
     onClick={onClick}>
         <motion.button
+            
             whileTap={{ scale: 2.0 }}
         >
             <AiFillHeart/>

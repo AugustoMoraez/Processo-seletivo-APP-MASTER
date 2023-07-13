@@ -19,7 +19,7 @@ type prop = {
 export const FavoritesPage = ({gamesList}:prop) => {
     const[list,setList] = useState<ItemGameList[]>(gamesList);
     const[inputText,setInputText] = useState("");
-    const[selectValue,setSelectValue] = useState("");
+    const[genreSeleted,setGenreSeleted] = useState("All");
 
     useEffect(()=>{
         setList(gamesList)
@@ -29,7 +29,7 @@ export const FavoritesPage = ({gamesList}:prop) => {
     //handle select
 
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectValue(e.target.value);
+        setGenreSeleted(e.target.value);
         if(e.target.value === "All"){
             setList(gamesList);
         }else{
@@ -45,7 +45,7 @@ export const FavoritesPage = ({gamesList}:prop) => {
 
     const handleInputText = (e:React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
-        const currentGenre = selectValue;
+        const currentGenre = genreSeleted;
         const list = currentGenre === "All" ? gamesList : getGamesToGenre(gamesList,currentGenre);
         setList(getItemSearch(e.target.value,list))
         
@@ -61,7 +61,7 @@ export const FavoritesPage = ({gamesList}:prop) => {
     return (
         <Container>
             <SearchOptions>
-                <GenreOptions value={selectValue} onChange={handleSelect} >
+                <GenreOptions value={genreSeleted} onChange={handleSelect} >
                     <option value="All">All</option>
                     {genres.map((item,index)=>(
                         <option key={index} value={item}>{item}</option>
