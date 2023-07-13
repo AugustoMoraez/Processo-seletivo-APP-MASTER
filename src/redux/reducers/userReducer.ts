@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import getTokenUser from '../../helpers/getTokenUser';
-import { ItemGameList } from '../../types/ItemGameList';
+import { ItemGameList } from '../../types/dataCard';
 import { db } from '../../services/firebaseConfig';
 import { doc,deleteDoc,setDoc } from 'firebase/firestore';
 

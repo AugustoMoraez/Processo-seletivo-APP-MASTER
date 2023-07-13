@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import {setInUserGamesList} from "../../redux/reducers/userReducer"
 //types
 import { RootState } from "../../redux/store";
-import { ItemGameList } from "../../types/ItemGameList";
+import { ItemGameList } from "../../types/dataCard";
 
 
 
@@ -37,6 +37,7 @@ export const GridItem = ({ item }: prop) => {
   }
   
   const SelectStart =  (index: number) => {
+   
     if(token === null){
       nav(`/auth/`)
     }else{

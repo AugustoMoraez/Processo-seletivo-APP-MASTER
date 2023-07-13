@@ -9,10 +9,10 @@ import { useParams } from "react-router-dom";
 import { getItemSearch } from "../../helpers/getItemSearch";
 import generateUserList from "../../helpers/generateUserList";
 //type
-import { ItemGameList } from "../../types/ItemGameList";
+import { dataCard } from "../../types/dataCard";
 
 type prop ={
-    gamesList:ItemGameList[]
+    gamesList:dataCard[]
 }
 
 export const SearchPage = ({gamesList}:prop) => {

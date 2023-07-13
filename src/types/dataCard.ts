@@ -1,7 +1,7 @@
 import { game } from "./game"
 
 
-export type ItemGameList = {
+export type dataCard = {
     id:string,
     game:game,
     favorite:boolean,

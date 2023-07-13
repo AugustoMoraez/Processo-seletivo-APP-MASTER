@@ -1,4 +1,4 @@
-import { ItemGameList } from "../types/ItemGameList";
+import { ItemGameList } from "../types/dataCard";
 
 
 export const getGamesRecomendeds = (game:ItemGameList,games:ItemGameList[]) => {

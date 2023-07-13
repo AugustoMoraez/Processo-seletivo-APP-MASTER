@@ -7,20 +7,20 @@ import { InputSearch } from "../../components/inputSearch";
 //router
 import { useParams } from "react-router-dom";
 //type
-import { ItemGameList } from "../../types/ItemGameList";
+import { dataCard } from "../../types/dataCard";
 //helpers
 import {getGamesToGenre} from "../../helpers/getGamesToGenre"; 
 import generateUserList from "../../helpers/generateUserList";
 
 
 type prop = {
-    gamesList:ItemGameList[]
+    gamesList:dataCard[]
 }
 
 export const GenrePage = ({gamesList}:prop) => {
     const params = useParams();
     const genre = params.genre as string;
-    const listGames:ItemGameList[] = getGamesToGenre(generateUserList(gamesList),genre)
+    const listGames:dataCard[] = getGamesToGenre(generateUserList(gamesList),genre)
 
     return (
         <>

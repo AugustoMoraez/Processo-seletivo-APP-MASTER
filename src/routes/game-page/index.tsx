@@ -8,10 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { getGameToShow } from "../../helpers/getGameToShow";
 import { getGamesRecomendeds } from "../../helpers/getGamesRecomendeds";
 
-import { ItemGameList } from "../../types/ItemGameList";
+import { dataCard } from "../../types/dataCard";
 
 type prop = {
-  gamesList:ItemGameList[]
+  gamesList:dataCard[]
 }
 
 export const GamePage = ({gamesList}:prop) => {

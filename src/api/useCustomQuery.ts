@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import fetchData from "./fetchData";
 import { dataFetch } from "../types/dataFetch";
 import { AxiosError } from "axios";
-import { ItemGameList } from "../types/ItemGameList";
+import { dataCard } from "../types/dataCard";
 
 
 
@@ -12,7 +12,7 @@ const useCustomQuery = ():dataFetch => {
         {retry:1});
         const Error = error as AxiosError
 
-        let listGames:ItemGameList[] = [];
+        let listGames:dataCard[] = [];
 
         data?.map((item,index)=>{
             listGames.push({

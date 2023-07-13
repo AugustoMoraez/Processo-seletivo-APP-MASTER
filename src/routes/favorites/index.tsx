@@ -2,7 +2,7 @@
 import { Container,VoidList,SearchOptions,Input,InputButton,InputContainer,GenreOptions } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
 import { GridItem } from "../../components/GirdItem";
-import { ItemGameList } from "../../types/ItemGameList";
+import { ItemGameList } from "../../types/dataCard";
 import { useState,KeyboardEvent,useEffect } from "react";
 import {BsSearch} from "react-icons/bs";
 import {getItemSearch} from "../../helpers/getItemSearch";
@@ -22,8 +22,9 @@ export const FavoritesPage = ({gamesList}:prop) => {
     const[genreSeleted,setGenreSeleted] = useState("All");
 
     useEffect(()=>{
-        setList(gamesList)
-    },gamesList)
+        const list  =  genreSeleted === "All" ? gamesList : getGamesToGenre(gamesList,genreSeleted)
+        setList(list)
+    },[gamesList])
 
     
     //handle select

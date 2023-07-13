@@ -24,7 +24,7 @@ import useCustomQuery from './api/useCustomQuery';
 import { onSnapshot } from 'firebase/firestore';
 import { store } from "./services/firebaseConfig";
 //types
-import { ItemGameList } from './types/ItemGameList';
+import { dataCard } from './types/dataCard';
 
 
 
@@ -33,19 +33,22 @@ const App = () => {
 
   const{listGames,isLoading,Error}=useCustomQuery();
   const{token}=useSelector((state:RootState)=>state.user)
-  let gamesList = listGames ? listGames.sort((a,b)=>a.game.title > b.game.title ? 1 : -1) : [];
+  let gamesList = listGames ? listGames.sort((a,b)=>a.id > b.id ? 1 : -1)  : [];
   const[toggle,setToggle]=useState<boolean>(false);
-  const[listUserGames,setListUserGames] = useState<ItemGameList[]>([])
+  const[listUserGames,setListUserGames] = useState<dataCard[]>([])
   const dispatch = useDispatch();
   const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
 
   useEffect(()=>{
     if(token){
       const unSub = onSnapshot(store,(data)=>{
+
         let list:any[] = [];
+        
         data.docs.forEach((doc) => {
           list.push({id:doc.id, ...doc.data()})
         })
+        
         setListUserGames(list)
         localStorage.setItem("ListGames",JSON.stringify(list))
         dispatch(setUserGamesList(JSON.parse(localStorage.getItem("ListGames") as string)))

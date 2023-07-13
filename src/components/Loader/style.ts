@@ -12,7 +12,7 @@ export const Container = styled.div`
     
     margin: auto;
     margin-top: 50vh;
-    margin-bottom: 50vh;
+    margin-bottom: 40vh;
     animation: rotating 0.5s infinite;
     border: 6px solid #fff;
     border-radius: 50%;

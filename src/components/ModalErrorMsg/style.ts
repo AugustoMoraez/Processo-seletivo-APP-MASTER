@@ -6,12 +6,15 @@ type prop = {
 
 export const Container = styled.div<prop>`
     background-color: rgba(0,0,0,0.3);
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: ${props => props.display === "true" ? "block" : "none"};
-    position: relative;
     position: absolute;
+    top: 0;
     z-index: 98;
+    overflow: hidden;
+     
+     
 `;
 
 
@@ -19,7 +22,6 @@ export const ModalMsg = styled.div`
     z-index: 98;
     position: absolute;
     background-color: #fefefe;
-    width: auto;
     padding: 20px;
     left: 50%;
     top:50%;
