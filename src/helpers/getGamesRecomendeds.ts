@@ -1,7 +1,7 @@
-import { ItemGameList } from "../types/dataCard";
+import { dataCard } from "../types/dataCard";
 
 
-export const getGamesRecomendeds = (game:ItemGameList,games:ItemGameList[]) => {
+export const getGamesRecomendeds = (game:dataCard,games:dataCard[]) => {
     let gameArray = [];
     let filter = games.filter((item)=>item.game.genre === game.game.genre 
               && item.game.title.toLowerCase() !== game.game.title.toLowerCase());

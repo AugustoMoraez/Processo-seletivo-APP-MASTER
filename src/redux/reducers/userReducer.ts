@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import getTokenUser from '../../helpers/getTokenUser';
-import { ItemGameList } from '../../types/dataCard';
+import { dataCard } from '../../types/dataCard';
 import { db } from '../../services/firebaseConfig';
 import { doc,deleteDoc,setDoc } from 'firebase/firestore';
 
@@ -27,8 +27,8 @@ const slice = createSlice({
       return{...state,userGamesList:action.payload}
     },
     setInUserGamesList:   (state, action)=>{
-      const itemPayload:ItemGameList = action.payload;
-      const userGamesList:ItemGameList[] = JSON.parse(localStorage.getItem("ListGames") as string)
+      const itemPayload:dataCard = action.payload;
+      const userGamesList:dataCard[] = JSON.parse(localStorage.getItem("ListGames") as string)
       
       if(userGamesList.some(item => item.game.id === itemPayload.game.id)){
         if(itemPayload.favorite === false  && itemPayload.stars === "undefined"){

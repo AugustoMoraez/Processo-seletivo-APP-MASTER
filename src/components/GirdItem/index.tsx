@@ -14,12 +14,12 @@ import { useDispatch } from "react-redux";
 import {setInUserGamesList} from "../../redux/reducers/userReducer"
 //types
 import { RootState } from "../../redux/store";
-import { ItemGameList } from "../../types/dataCard";
+import { dataCard } from "../../types/dataCard";
 
 
 
 type prop = {
-  item: ItemGameList
+  item: dataCard
 }
 
 const starsArray: number[] = [... (new Array(4).keys() as any)]

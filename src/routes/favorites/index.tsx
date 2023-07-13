@@ -2,7 +2,7 @@
 import { Container,VoidList,SearchOptions,Input,InputButton,InputContainer,GenreOptions } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
 import { GridItem } from "../../components/GirdItem";
-import { ItemGameList } from "../../types/dataCard";
+import { dataCard } from "../../types/dataCard";
 import { useState,KeyboardEvent,useEffect } from "react";
 import {BsSearch} from "react-icons/bs";
 import {getItemSearch} from "../../helpers/getItemSearch";
@@ -11,13 +11,13 @@ import { genres } from "../../data/genres";
 
 
 type prop = {
-    gamesList:ItemGameList[]
+    gamesList:dataCard[]
 }
 
 
 
 export const FavoritesPage = ({gamesList}:prop) => {
-    const[list,setList] = useState<ItemGameList[]>(gamesList);
+    const[list,setList] = useState<dataCard[]>(gamesList);
     const[inputText,setInputText] = useState("");
     const[genreSeleted,setGenreSeleted] = useState("All");
 
