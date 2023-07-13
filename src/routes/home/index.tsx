@@ -1,5 +1,5 @@
 //components
-import { Container } from "./style";
+import { Container, PageNumber } from "./style";
 import { GridContainer } from "../../components/GridContainer/style";
 import { GridItem } from "../../components/GirdItem";
 import { Banner } from "../../components/banner";
@@ -67,6 +67,9 @@ export const HomePage = ({gamesList }:prop) => {
         <Container>
             <Banner/>
             <InputSearch/>
+            {
+                currentPage > 1 && <PageNumber>{`Page: ${currentPage}`}</PageNumber>
+            }
             <GridContainer>
                  
                 {currentItens.map((item)=>(

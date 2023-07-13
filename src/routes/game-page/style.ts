@@ -61,36 +61,42 @@ export const Title = styled.h1`
   //display
   align-items: center;
   text-align: center;
-  @media (max-width:723px) {
-    margin: auto;
-  }
+  margin: auto;
   
 `;
 
 export const Description = styled.p`
   //dimensao
   max-width: 400px;
+  margin: auto;
   margin-bottom: 16px;
   //style
   text-align: center;
   font-size: 16px;
   color: #333;
-  @media (max-width:1020px) {
-    text-align: left;   
-  }
+  
    
    
 `;
 
 export const Details = styled.p`
   //dimensao
+  margin: auto;
+  display: flex;
   margin-bottom: 8px;
   //style
   font-size: 14px;
   align-items: center;
   color: #333;
-
   
+`;
+export const Avaliation = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
 `;
 
 export const Platforms = styled.p`

@@ -16,8 +16,6 @@ import {setInUserGamesList} from "../../redux/reducers/userReducer"
 import { RootState } from "../../redux/store";
 import { dataCard } from "../../types/dataCard";
 
-
-
 type prop = {
   item: dataCard
 }
@@ -37,7 +35,6 @@ export const GridItem = ({ item }: prop) => {
   }
   
   const SelectStart =  (index: number) => {
-   
     if(token === null){
       nav(`/auth/`)
     }else{
