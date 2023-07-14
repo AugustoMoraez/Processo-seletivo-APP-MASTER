@@ -26,7 +26,7 @@ export const GridItem = ({ item }: prop) => {
   
   const [activeIndex, setActiveIndex] = useState<number|undefined>(item.stars === "undefined" ? undefined : parseInt(item.stars));
   const [isLiked, setisLiked] = useState<boolean>(item.favorite);
-  const{token} = useSelector((state:RootState) => state.user)
+  const {token} = useSelector((state:RootState) => state.user)
   const nav = useNavigate();
   const dispatch = useDispatch();
 

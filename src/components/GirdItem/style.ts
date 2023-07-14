@@ -28,6 +28,9 @@ export const CardContent = styled.div`
   h1{
     font-size: 20px;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   p{
     width: 100%;

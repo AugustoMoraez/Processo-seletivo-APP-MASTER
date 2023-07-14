@@ -4,18 +4,10 @@ import { Header } from './components/header';
 import { Aside } from './components/Aside';
 import { Load } from './components/Loader';
 import { ErroMessage } from './components/ErrorMsgRequest';
-//pages
-import {AuthPage} from './routes/auth/index';
-import { HomePage } from './routes/home';
-import { GenrePage } from './routes/genero';
-import { GamePage } from './routes/game-page';
-import {SearchPage} from './routes/search';
-import { FavoritesPage } from './routes/favorites';
+import { RouteList } from './routes/routeList';
 //libs
-import { Routes,Route } from 'react-router-dom';
 import  {useSelector} from "react-redux";
 import  {useDispatch} from "react-redux";
-import { RootState } from './redux/store';
 import {setUserGamesList} from "./redux/reducers/userReducer"
 //hooks
 import { useState,useEffect } from 'react';
@@ -25,19 +17,22 @@ import { onSnapshot } from 'firebase/firestore';
 import { store } from "./services/firebaseConfig";
 //types
 import { dataCard } from './types/dataCard';
+import { RootState } from './redux/store';
 
 
 
 const App = () => {
   
-
+  //hooks
   const{listGames,isLoading,Error}=useCustomQuery();
   const{token}=useSelector((state:RootState)=>state.user)
-  let gamesList = listGames ? listGames.sort((a,b)=>a.id > b.id ? 1 : -1)  : [];
-  const[toggle,setToggle]=useState<boolean>(false);
-  const[listUserGames,setListUserGames] = useState<dataCard[]>([])
   const dispatch = useDispatch();
-  const toggleFunc=(toggle:boolean)=>setToggle(!toggle);
+  //toggle menu
+  const[toggle,setToggle]=useState<boolean>(false);
+  //games API APP MASTERS
+  let gamesList = listGames ? listGames.sort((a,b)=>a.id > b.id ? 1 : -1)  : [];
+  //games API FIREBASE
+  const[listUserGames,setListUserGames] = useState<dataCard[]>([])
 
   useEffect(()=>{
     if(token){
@@ -52,8 +47,7 @@ const App = () => {
         setListUserGames(list)
         localStorage.setItem("ListGames",JSON.stringify(list))
         dispatch(setUserGamesList(JSON.parse(localStorage.getItem("ListGames") as string)))
-      },
-      (error)=>alert("firestore error request:"+error))
+      })
       return () => {unSub()}
     }
   },[token])
@@ -74,20 +68,12 @@ const App = () => {
   }
   return (
     <Container> 
-      <Header  toggleFunc={()=>toggleFunc(toggle)} />
+      <Header  toggleFunc={()=>setToggle(!toggle)} />
       <Aside 
       toggle={toggle} 
-      toggleFunc={()=>toggleFunc(toggle)} 
+      toggleFunc={()=>setToggle(!toggle)} 
       />
-      <Routes>
-        <Route path="/" element={<HomePage gamesList={ gamesList }  />} />
-        <Route path="/auth" element={<AuthPage/>} />
-        <Route path="/favorites" element={<FavoritesPage gamesList={listUserGames}/>} />
-        
-        <Route path="/game/:game" element={<GamePage gamesList={gamesList }/>} />
-        <Route path="/filter/:genre" element={<GenrePage gamesList={gamesList  }/>} />
-        <Route path="/search/:itemSearch" element={<SearchPage gamesList={ gamesList }/>} />
-      </Routes>
+      <RouteList gamesList={gamesList} listUserGames={listUserGames}/>
       
     </Container>
   );
