@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useSignOut } from 'react-firebase-hooks/auth';
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
-import {setCurrentUser} from "../../redux/reducers/userReducer"
+import {setCurrentUser} from "../../redux/userReducer"
 //types
 import { RootState } from "../../redux/store";
 

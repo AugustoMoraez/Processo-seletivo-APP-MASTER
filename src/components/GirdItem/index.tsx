@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 //redux
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {setInUserGamesList} from "../../redux/reducers/userReducer"
+import {setInUserGamesList} from "../../redux/userReducer"
 //types
 import { RootState } from "../../redux/store";
 import { dataCard } from "../../types/dataCard";

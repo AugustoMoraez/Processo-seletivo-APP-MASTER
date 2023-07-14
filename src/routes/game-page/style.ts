@@ -173,4 +173,8 @@ export const FlexItem = styled.div<prop>`
   height:150px;
   margin: 5px;
   border-radius: 10px;
+  transition: 0.5s;
+  &:hover{
+    box-shadow: 0px 0px 20px #333;
+  }
 `;

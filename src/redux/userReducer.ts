@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getTokenUser from '../../helpers/getTokenUser';
-import { dataCard } from '../../types/dataCard';
-import { db } from '../../services/firebaseConfig';
+import getTokenUser from '../helpers/getTokenUser';
+import { dataCard } from '../types/dataCard';
+import { db } from '../services/firebaseConfig';
 import { doc,deleteDoc,setDoc } from 'firebase/firestore';
 
 

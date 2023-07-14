@@ -4,7 +4,7 @@ import { ModalMensage } from "../../ModalErrorMsg";
 import { Load } from "../../Loader";
 //redux
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../../../redux/reducers/userReducer";
+import { setCurrentUser } from "../../../redux/userReducer";
 //hooks react
 import {useState,useEffect} from "react"
 //hooks Router
@@ -72,10 +72,12 @@ export const LoginPage = () => {
     return(
          
         <Container>
+            
             <ModalMensage 
             msg="email or password invalid" 
             toggle={errorModal} 
-            func={()=>setErrorModal(!errorModal)}  />
+            func={()=>setErrorModal(!errorModal)} />
+            
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <FormHeader>
                     <h1>Your Account</h1>

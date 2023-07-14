@@ -1,0 +1,4 @@
+#Helpers
+1-Funções utilizadas para:
+    filtrar a lista de jogos em torno de um parametro;
+    Obter informações especificas dentro do codigo;

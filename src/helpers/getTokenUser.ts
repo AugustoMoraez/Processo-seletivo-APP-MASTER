@@ -1,3 +1,9 @@
+
+/*
+    Busca no local storage se ha um token de usuario caso nao tenha retorna null
+*/
+
+
 export const getTokenUser = ():any => {
     let dataJSON:string | null = localStorage.getItem("token");
     

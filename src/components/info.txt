@@ -1,0 +1,15 @@
+#header -> header da pagina
+#Aside -> menu lateral
+#banner -> banner da pagina home
+#erro msg request ->  mensagem de erro que surge ao se obter erros na API APP MASTERS
+#forms -> formularios de login e register
+#griditem -> componente que exibe cada card com informações dos jogos
+#grid container -> exibe os griditens
+#input search -> input que leva para a pagina de resultados de pesquisa
+#like button -> botão que insere/remove um like no jogo.
+#ratingStars -> botao que insere/remove estrelas de avaliação no jogo
+#loader -> loader exibido enquanto se obtem dados
+#menu -> icone do menu no aside
+#modalErrorMsg -> modal que exibe erros no geral
+#pagination -> componente usado para paginação na home
+

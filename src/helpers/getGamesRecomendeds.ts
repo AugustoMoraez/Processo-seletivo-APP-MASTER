@@ -1,5 +1,11 @@
 import { dataCard } from "../types/dataCard";
 
+/*
+    Gera a lista de jogos recomendados da pagina game-page
+    selecionando os 3 primeiros jogos do mesmo genero que o
+    jogo em exibição.
+*/
+
 
 export const getGamesRecomendeds = (game:dataCard,games:dataCard[]) => {
     let gameArray = [];

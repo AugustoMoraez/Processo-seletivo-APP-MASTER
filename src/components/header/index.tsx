@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 
 type props = {
-    toggleFunc:()=>void,
-    
+    toggle:boolean,
+    toggleFunc:()=>void    
 }
 
-export const Header = ({toggleFunc}:props) => {
+export const Header = ({toggleFunc,toggle }:props) => {
     return(
         <Container>
 
@@ -17,7 +17,7 @@ export const Header = ({toggleFunc}:props) => {
                 GameDev
             </Link>
             
-            <Menu toggleFunc={toggleFunc} />
+            <Menu toggle={toggle}  toggleFunc={toggleFunc} />
 
         </Container>
     )

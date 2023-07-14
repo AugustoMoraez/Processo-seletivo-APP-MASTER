@@ -18,7 +18,7 @@ import { RootState } from "../../redux/store";
 import { useEffect,useState } from "react";
 //redux
 import { useSelector,useDispatch } from "react-redux";
-import { setInUserGamesList } from "../../redux/reducers/userReducer";
+import { setInUserGamesList } from "../../redux/userReducer";
 
 
 

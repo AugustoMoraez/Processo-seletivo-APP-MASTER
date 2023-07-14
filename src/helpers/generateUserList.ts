@@ -2,6 +2,11 @@ import { dataCard } from "../types/dataCard";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
+/*
+    Função recebe a lista de jogos da api APP MASTERS
+    e substitui os itens por itens que possuem uma avaliação
+    vindo da API do firebase
+*/
 
 const generateUserList = (list:dataCard[]):dataCard[] => {
     const editList = () => {

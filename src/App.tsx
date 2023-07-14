@@ -8,7 +8,7 @@ import { RouteList } from './routes/routeList';
 //libs
 import  {useSelector} from "react-redux";
 import  {useDispatch} from "react-redux";
-import {setUserGamesList} from "./redux/reducers/userReducer"
+import {setUserGamesList} from "./redux/userReducer"
 //hooks
 import { useState,useEffect } from 'react';
 import useCustomQuery from './api/useCustomQuery';
@@ -68,7 +68,10 @@ const App = () => {
   }
   return (
     <Container> 
-      <Header  toggleFunc={()=>setToggle(!toggle)} />
+      <Header 
+      toggle={toggle}
+      toggleFunc={()=>setToggle(!toggle)} />
+      
       <Aside 
       toggle={toggle} 
       toggleFunc={()=>setToggle(!toggle)} 

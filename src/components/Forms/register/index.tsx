@@ -18,7 +18,7 @@ import { auth } from "../../../services/firebaseConfig";
 import { singInData } from "../../../types/AuthForm";
 //redux
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../../../redux/reducers/userReducer";
+import { setCurrentUser } from "../../../redux/userReducer";
 
 
 export const RegisterPage = () => {
