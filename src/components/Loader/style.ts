@@ -3,22 +3,22 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     
-        
-    @keyframes rotating {
-        to {
-            transform: rotate(1turn)
-        }
-    }
-    
     margin: auto;
     margin-top: 50vh;
     margin-bottom: 40vh;
-    animation: rotating 0.5s infinite;
-    border: 6px solid #fff;
-    border-radius: 50%;
-    border-bottom: 6px solid #003488;
-    height: 50px;
-    width: 50px;
+    text-align: center;
+    .box{
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        background: #007BFF;
+
+    }
+    p{
+        color:#333;
+        font-weight: 900;
+        margin-top: 10px;
+    }
         
     
     

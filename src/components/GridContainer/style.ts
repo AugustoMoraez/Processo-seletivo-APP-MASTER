@@ -8,6 +8,7 @@ export const GridContainer = styled.div`
     margin: auto;
     padding: 5px;
     padding-top: 50px;
+    padding-bottom: 50px;
     
     //display
     display: grid;

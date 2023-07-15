@@ -6,10 +6,10 @@ export const CardContainer = styled.div`
     padding: 15px;
     border-radius: 5px;
     color: black;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border: 1px solid rgba(150 ,150 ,150,0.5);
     transition: all 0.5s ease 0s;
   &:hover{
-    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0px 0px 10px #333;
   }
   
 `;
