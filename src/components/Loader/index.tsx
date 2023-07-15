@@ -21,7 +21,7 @@ export const Load = () => {
                     repeat: Infinity,
                 }}
             />
-            <p>Loading...</p>
+           
         </Container>
     )
 

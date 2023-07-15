@@ -1,7 +1,7 @@
 //Componentes
-import { Container,FormContainer,FormHeader,FormBody,InputContainer } from "../style";
+import { Container,FormContainer,FormHeader,FormBody,InputContainer,Loader } from "../style";
 import { ModalMensage } from "../../ModalErrorMsg";
-import { Load } from "../../Loader";
+
 //redux
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../../redux/userReducer";
@@ -64,7 +64,7 @@ export const LoginPage = () => {
         return(
             <Container>
                 <FormBody>
-                    <Load/>
+                    <Loader/>
                 </FormBody>
             </Container>
         )

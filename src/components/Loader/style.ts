@@ -14,12 +14,7 @@ export const Container = styled.div`
         background: #007BFF;
 
     }
-    p{
-        color:#333;
-        font-weight: 900;
-        margin-top: 10px;
-    }
-        
+  
     
     
 `;

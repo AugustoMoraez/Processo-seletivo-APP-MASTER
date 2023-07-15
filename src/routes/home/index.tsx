@@ -29,7 +29,7 @@ export const HomePage = ({gamesList }:prop) => {
 
     useEffect(()=>{
         setItens(paginateItems(list,currentPage))
-    },[currentPage])
+    },[currentPage,list])
 
     const nextPage = () => {
         window.scrollTo({

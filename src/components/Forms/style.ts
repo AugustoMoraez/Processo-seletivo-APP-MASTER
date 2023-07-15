@@ -88,4 +88,22 @@ export const FormBody = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+     
+`;
+export const Loader = styled.div`
+    
+    @keyframes spin {
+        to{
+            transform: rotate(360deg);
+        }
+    }
+    animation: spin 1s linear infinite;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    border-bottom: 3px solid #0084FF;
+    border-radius: 50%;
+    margin-bottom: 50vh;
+    margin-top: 50vh;
+
 `;
