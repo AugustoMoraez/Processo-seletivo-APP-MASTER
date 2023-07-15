@@ -1,7 +1,7 @@
 //components
 import { Container, FormContainer, FormHeader, FormBody, InputContainer, Loader  } from "../style";
 import { ModalMensage } from "../../ModalErrorMsg";
-import { Load } from "../../Loader";
+
 //react
 import { useState, useEffect } from "react"
 
