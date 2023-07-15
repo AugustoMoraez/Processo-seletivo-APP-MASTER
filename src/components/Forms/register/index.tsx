@@ -98,7 +98,7 @@ export const RegisterPage = () => {
             />
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <FormHeader>
-                    <h1>Your Account</h1>
+                    <h1> SingIn account</h1>
                     <span>fill in your details to proceed</span>
                 </FormHeader>
                 <FormBody>

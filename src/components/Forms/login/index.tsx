@@ -80,7 +80,7 @@ export const LoginPage = () => {
             
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <FormHeader>
-                    <h1>Your Account</h1>
+                    <h1>Login Account</h1>
                     <span>fill in your details to proceed</span>
                 </FormHeader>
                 <FormBody>
