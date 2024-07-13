@@ -30,12 +30,15 @@
 
 #Descrição do projeto e minha analise pessoal
 <p>
-    Neste projeto foi solicitado que eu consumisse uma API de jogos e algumas outras
-    funções para o site também foram solicitadas como:
-    - Opção de criar uma conta no site
-    - O usuario poderia criar sua lista de jogos atravez de um botao favoritos
-    - Seria possial criar avaliações para jogos
-    - Também foi solicitado que eu tratasse os erros de requisição que a API retornaria propositalmente.
+    Neste projeto, foi requisitado que eu utilizasse uma API de jogos e implementasse várias funcionalidades adicionais para o 
+    site, incluindo: a criação de contas de usuário, a possibilidade de os usuários criarem suas listas de jogos através de um 
+    botão de favoritos, a capacidade de realizar avaliações de jogos, além do tratamento de erros intencionais retornados pela 
+    API durante as requisições. Também foi solicitada a implementação de uma função de busca e filtros para melhorar a navegação
+    e a experiência do usuário no site.
+
+
+
+
 </p>
 
 <b>Meu relatorio do projeto</b>
