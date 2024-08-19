@@ -13,21 +13,6 @@
 - Axios
 
 
-#Imagens do projeto
-
-- Home
-<h1>
-    <img src="./public/readme-imgs/home.png">
-</h1>
-- Game Page
-<h1>
-    <img src="./public/readme-imgs/gam-%20page.png">
-</h1>
-- Area de Busca
-<h1>
-    <img src="./public/readme-imgs/search-area.png">
-</h1>
-
 #Descrição do projeto e minha analise pessoal
 <p>
     Neste projeto, foi requisitado que eu utilizasse uma API de jogos e implementasse várias funcionalidades adicionais para o 
@@ -50,3 +35,20 @@
     entre os concorrentes. Infelizmente, um erro simples acabou me custando a continuidade: na minha aplicação, os jogos estavam sendo 
     adicionados à lista de favoritos mesmo sem serem favoritados, apenas por receberem avaliações.
 </p>
+
+
+#Imagens do projeto
+
+- Home
+<h1>
+    <img src="./public/readme-imgs/home.png">
+</h1>
+- Game Page
+<h1>
+    <img src="./public/readme-imgs/gam-%20page.png">
+</h1>
+- Area de Busca
+<h1>
+    <img src="./public/readme-imgs/search-area.png">
+</h1>
+
